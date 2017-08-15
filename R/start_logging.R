@@ -18,13 +18,13 @@ start_logging <- function(make_file = FALSE, file_name){
   logging::logReset()
 
   # write to console
-  logging::getLogger()$addHandler(writeToConsole, level = 'DEBUG')
+  logging::getLogger()$addHandler(logging::writeToConsole, level = 'DEBUG')
 
   # write to file
   if( make_file ){
     if(missing(file_name)) file_name <- paste0('R_', stringr::str_replace_all(Sys.time(), " ", "_"))
     logfile <- file.path(getwd(), paste0(file_name, ".log"))
-    logging::getLogger()$addHandler(writeToFile, file = logfile, level = 'DEBUG')
+    logging::getLogger()$addHandler(logging::writeToFile, file = logfile, level = 'DEBUG')
   }
 
 }
