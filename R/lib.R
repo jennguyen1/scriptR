@@ -19,9 +19,11 @@ install_scriptR <- function() devtools::install_github("jnguyen92/scriptR")
 #' @rdname lib
 #' @export
 lib <- function(...){
+
   args <- as.character(substitute(list(...))[-1])
-  lib_opts <- data.table::data.table(data = TRUE, develop = TRUE, viz = FALSE)[, (args) := TRUE]
+  lib_opts <- dplyr::mutate_at(dataframe(data = TRUE, develop = TRUE, viz = FALSE), dplyr::vars(dplyr::one_of(args)), function(x) TRUE)
   suppressWarnings( suppressPackageStartupMessages( import_lib(lib_opts) ) )
+
 }
 
 import_lib <- function(lib_opts){
