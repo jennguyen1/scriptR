@@ -20,7 +20,7 @@ install_scriptR <- function() devtools::install_github("jnguyen92/scriptR")
 #' @export
 lib <- function(...){
   args <- as.character(substitute(list(...))[-1])
-  lib_opts <- data.table::data.table(data = TRUE, develop = TRUE, viz = FALSE) %>% .[, (args) := TRUE]
+  lib_opts <- data.table::data.table(data = TRUE, develop = TRUE, viz = FALSE)[, (args) := TRUE]
   suppressWarnings( suppressPackageStartupMessages( import_lib(lib_opts) ) )
 }
 
