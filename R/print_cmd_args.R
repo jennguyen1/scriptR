@@ -17,6 +17,9 @@
 
 print_cmd_args <- function(args){
 
+  # handle missing arg
+  if(missing(args)) logerror("Missing list of command line arguments")
+  
   # remove log and help options in args list
   cmdargs <- purrr::discard(args, names(args) %in% c('log', 'help'))
 
