@@ -21,7 +21,7 @@ logmisc <- function(x){
 
     logfile <- scriptR::get_logfile()
     if(is.data.frame(x)){
-      suppressWarnings(write.table(df, file = logfile, append = TRUE, quote = FALSE, row.names = FALSE, sep = "\t"))
+      suppressWarnings(write.table(x, file = logfile, append = TRUE, quote = FALSE, row.names = FALSE, sep = "\t"))
     } else{
       capture.output(x, file = logfile, append = TRUE)
     }
