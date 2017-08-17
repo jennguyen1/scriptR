@@ -12,8 +12,8 @@ NULL
 
 #' @rdname logfile
 #' @export
-exists_logfile <- function() !is.null(logging::getLogger()$handlers$writeToFile)
+exists_logfile <- function() !is.null(logging::getLogger()$handlers$`logging::writeToFile`)
 
 #' @rdname logfile
 #' @export
-get_logfile <- function() logging::getLogger()$handlers$writeToFile$file
+get_logfile <- function() logging::getLogger()$handlers$`logging::writeToFile`$file
