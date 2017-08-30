@@ -4,18 +4,15 @@
 \alias{start_logging}
 \title{Initiates a Logging Session}
 \usage{
-start_logging(make_file = FALSE, file_name)
+start_logging(file_name = NULL)
 }
 \arguments{
-\item{make_file}{should a log file be created}
-
-\item{file_name}{name of the log file, if none given will save to default (R_[timestamp])}
+\item{file_name}{basename of the log file, if desired}
 }
 \description{
 Logs messages to command line, with option to create a log file.
 }
 \examples{
-start_logging(FALSE)
-start_logging(TRUE, "test.log")
+start_logging("log_test")
 
 }

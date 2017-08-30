@@ -2,17 +2,15 @@
 #'
 #' Logs messages to command line, with option to create a log file.
 #'
-#' @param make_file should a log file be created
-#' @param file_name name of the log file, if none given will save to default (R_[timestamp])
+#' @param file_name basename of the log file, if desired
 #'
 #' @export
 #'
 #' @examples
-#' start_logging(FALSE)
-#' start_logging(TRUE, "test.log")
+#' start_logging("log_test")
 #'
 
-start_logging <- function(make_file = FALSE, file_name){
+start_logging <- function(file_name = NULL){
 
   # initialize
   logging::logReset()
@@ -21,9 +19,8 @@ start_logging <- function(make_file = FALSE, file_name){
   logging::getLogger()$addHandler(logging::writeToConsole, level = 'DEBUG')
 
   # write to file
-  if( make_file ){
-    if(missing(file_name)) file_name <- paste0('R_', stringr::str_replace_all(Sys.time(), " ", "_"))
-    logfile <- file.path(getwd(), paste0(file_name, ".log"))
+  if( !is.null(file_name) ){
+    logfile <- paste0(file_name, ".log")
     logging::getLogger()$addHandler(logging::writeToFile, file = logfile, level = 'DEBUG')
   }
 
