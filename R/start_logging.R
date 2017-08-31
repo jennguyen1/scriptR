@@ -24,6 +24,7 @@ start_logging <- function(file_name = NULL){
     logging::getLogger()$addHandler(logging::writeToFile, file = logfile, level = 'DEBUG')
   }
   
+  # set level
   setLevel('DEBUG')
 
 }
