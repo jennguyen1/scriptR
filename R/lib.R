@@ -53,6 +53,7 @@ import_lib <- function(lib_opts){
 
   if(lib_opts$develop){
     # development
+    library(argparse)
     library(optparse)
     library(logging)
   }
