@@ -9,17 +9,20 @@
 #' @examples
 #' scriptR::start_logging()
 #'
-#' option_list <- list(make_option("--test_opt", help = "this is a parameter"))
-#' opt <- parse_args(OptionParser(description = "This is a test", option_list = option_list))
+#' description <- "TEST"
+#' parser <- ArgumentParser(description = description)
+#' parser$add_argument("--test_opt", help = "This is a test"),
+#' parser$add_argument("--log", default = NULL, help = "Prefix of the log file; call be NULL or a default name [default]")
+#' args <- parser$parse_args()
 #'
-#' print_cmd_args(opt)
+#' print_cmd_args(args)
 #'
 
 print_cmd_args <- function(args){
 
   # handle missing arg
   if(missing(args)) logerror("Missing list of command line arguments")
-  
+
   # remove log and help options in args list
   cmdargs <- purrr::discard(args, names(args) %in% c('log', 'help'))
 
