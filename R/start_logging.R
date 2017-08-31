@@ -23,5 +23,7 @@ start_logging <- function(file_name = NULL){
     logfile <- paste0(file_name, ".log")
     logging::getLogger()$addHandler(logging::writeToFile, file = logfile, level = 'DEBUG')
   }
+  
+  setLevel('DEBUG')
 
 }
