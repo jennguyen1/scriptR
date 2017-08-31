@@ -25,6 +25,6 @@ start_logging <- function(file_name = NULL){
   }
   
   # set level
-  setLevel('DEBUG')
+  logging::setLevel('DEBUG')
 
 }
