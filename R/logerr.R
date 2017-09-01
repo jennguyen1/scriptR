@@ -7,4 +7,4 @@
 #' @export
 #'
 
-logerror <- function(msg) stop(logging::logerror(msg))
+logerr <- function(msg) stop(logging::logerror(msg))
