@@ -56,6 +56,7 @@ import_lib <- function(lib_opts){
     library(argparse)
     library(optparse)
     library(logging)
+    library(parallel)
   }
 
 }
