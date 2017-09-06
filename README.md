@@ -19,9 +19,10 @@ This package contains a variety of functions that simplify scripting in R.
 * `logmisc()` extends the logging package by allowing logging of misc objects, such as dataframes
 * `logerror()` logs an error with logging and then stops the program
 * `print_cmd_args()` prints out command line arguments to console and logfile if it exists
+* `process_args()` intiates a script by (1) start log, (2) process command line args, (3) log command line args
 
 ## Installation
 `devtools::install_github("jnguyen92/scriptR")`
 
 ## Prerequisites
-These functions depend on the following packages: logging, optparse, tidyverse, data.table. Other data wrangling packages are optional (see lib function).
+These functions depend on the following packages: logging, argparse, optparse, tidyverse, data.table. Other data wrangling packages are optional (see lib function).
