@@ -7,7 +7,7 @@
 #'
 #' lib() imports libraries depending on args: \cr
 #'  data: (data wrangling) tidyverse, data.table, etc \cr
-#'  develop: (development) argparse, optparse, logging \cr
+#'  develop: (development) argparse, optparse, logging, parallel \cr
 #'  viz: (data visualization) ggplot2 and extensions \cr
 #'
 #' @name lib

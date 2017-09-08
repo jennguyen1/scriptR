@@ -9,7 +9,7 @@ write.out(dat, file, ...)
 \arguments{
 \item{dat}{dataframe}
 
-\item{file}{name of file}
+\item{file}{name of file; if file extension is csv or tsv saves file as such}
 
 \item{...}{other parameters to pass to writing functions}
 }
