@@ -4,10 +4,12 @@
 \alias{start_logging}
 \title{Initiates a Logging Session}
 \usage{
-start_logging(file_name = NULL)
+start_logging(file_name = NULL, log_level = "DEBUG")
 }
 \arguments{
-\item{file_name}{basename of the log file, if desired}
+\item{file_name}{name of the log file, if desired}
+
+\item{log_level}{logging level, see logging::loglevels for available options}
 }
 \description{
 Logs messages to command line, with option to create a log file.

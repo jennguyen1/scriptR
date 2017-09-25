@@ -10,7 +10,7 @@ logmisc(x)
 \item{x}{any object to be logged}
 }
 \description{
-Allows for logging of data structures such as dataframes, etc
+Allows for logging of data structures such as dataframes, etc. Logs at the level INFO.
 }
 \examples{
 logmisc(iris)
