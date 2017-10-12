@@ -1,8 +1,9 @@
 #' Logs Misc Data Structures
 #'
-#' Allows for logging of data structures such as dataframes, etc. Logs at the level INFO.
+#' Allows for logging of data structures such as dataframes, etc.
 #'
 #' @param x any object to be logged
+#' @param loglevel level to log the message
 #'
 #' @export
 #'
@@ -11,11 +12,11 @@
 #' logmisc(summary(iris))
 #'
 
-logmisc <- function(x){
+logmisc <- function(x, loglevel = 'INFO'){
 
   # restrict logging to INFO level
   current_level <- logging::getLogger()$level
-  logmisc_level <- logging::loglevels['INFO']
+  logmisc_level <- logging::loglevels[loglevel]
 
   if(current_level <= logmisc_level){
 

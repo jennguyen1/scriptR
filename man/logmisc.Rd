@@ -4,13 +4,15 @@
 \alias{logmisc}
 \title{Logs Misc Data Structures}
 \usage{
-logmisc(x)
+logmisc(x, loglevel = "INFO")
 }
 \arguments{
 \item{x}{any object to be logged}
+
+\item{loglevel}{level to log the message}
 }
 \description{
-Allows for logging of data structures such as dataframes, etc. Logs at the level INFO.
+Allows for logging of data structures such as dataframes, etc.
 }
 \examples{
 logmisc(iris)
