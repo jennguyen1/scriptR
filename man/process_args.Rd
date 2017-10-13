@@ -4,7 +4,7 @@
 \alias{process_args}
 \title{Process Command Line Args and Initiate Logging}
 \usage{
-process_args(parser, description, ...)
+process_args(parser, description, log_level = "DEBUG", ...)
 }
 \arguments{
 \item{parser}{an argparse object}
@@ -23,9 +23,9 @@ Processes command line args, logs script description & arguments passed in. Retu
 
 description <- "TEST"
 parser <- ArgumentParser(description = description)
-parser$add_argument("--test_opt", help = "This is a test"),
+parser$add_argument("--test_opt", help = "This is a test")
 parser$add_argument("--log", default = NULL, help = "Prefix of the log file; call be NULL or a default name [default]")
 
-args <- process_options(parser = parser, description = description, ...)
+args <- process_options(parser = parser, description = description, log_level = "DEBUG", ...)
 
 }

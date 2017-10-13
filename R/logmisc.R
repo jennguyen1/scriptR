@@ -3,7 +3,7 @@
 #' Allows for logging of data structures such as dataframes, etc.
 #'
 #' @param x any object to be logged
-#' @param loglevel level to log the message
+#' @param log_evel level to log the message
 #'
 #' @export
 #'
@@ -12,11 +12,11 @@
 #' logmisc(summary(iris))
 #'
 
-logmisc <- function(x, loglevel = 'INFO'){
+logmisc <- function(x, log_level = 'INFO'){
 
   # restrict logging to INFO level
   current_level <- logging::getLogger()$level
-  logmisc_level <- logging::loglevels[loglevel]
+  logmisc_level <- logging::loglevels[log_level]
 
   if(current_level <= logmisc_level){
 

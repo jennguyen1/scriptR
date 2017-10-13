@@ -13,17 +13,17 @@
 #'
 #' description <- "TEST"
 #' parser <- ArgumentParser(description = description)
-#' parser$add_argument("--test_opt", help = "This is a test"),
+#' parser$add_argument("--test_opt", help = "This is a test")
 #' parser$add_argument("--log", default = NULL, help = "Prefix of the log file; call be NULL or a default name [default]")
 #'
-#' args <- process_options(parser = parser, description = description, ...)
+#' args <- process_options(parser = parser, description = description, log_level = "DEBUG", ...)
 #'
 
-process_args <- function(parser, description, ...){
+process_args <- function(parser, description, log_level = "DEBUG", ...){
 
   args <- parser$parse_args(...)
 
-  scriptR::start_logging(args$log)
+  scriptR::start_logging(file_name = args$log, log_level = log_level)
   logging::loginfo(description)
   scriptR::print_cmd_args(args)
 

@@ -7,10 +7,10 @@
 #' @export
 #'
 #' @examples
-#' setLevel_global("CRITICAL")
+#' set_level_global("CRITICAL")
 #'
 
-setLevel_global <- function(level){
+set_level_global <- function(level){
 
   if(missing(level)) scriptR::logerr("Missing level")
 
