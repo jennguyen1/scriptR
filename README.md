@@ -23,7 +23,7 @@ This package contains a variety of functions that simplify scripting in R.
 * `process_args()` intiates a script by (1) start log, (2) process command line args, (3) log command line args
 
 ## Installation
-`devtools::install_github("jnguyen92/scriptR")`
+`devtools::install_github("jennguyen1/scriptR")`
 
 ## Prerequisites
 These functions depend on the following packages: logging, argparse, optparse, tidyverse, data.table. Other data wrangling packages are optional (see lib function).

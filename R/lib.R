@@ -14,7 +14,7 @@
 
 #' @rdname lib
 #' @export
-install_scriptR <- function() devtools::install_github("jnguyen92/scriptR")
+install_scriptR <- function() devtools::install_github("jennguyen1/scriptR")
 
 #' @rdname lib
 #' @export
