@@ -2,7 +2,7 @@
 
 export(ensure_requisite_folders)
 export(exists_logfile)
-export(get_level)
+export(get_log_level)
 export(get_logfile)
 export(install_scriptR)
 export(lib)

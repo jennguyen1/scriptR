@@ -5,11 +5,11 @@
 #' @export
 #'
 #' @examples
-#' get_level()
+#' get_log_level()
 #'
 
-get_level <- function(){
-  
+get_log_level <- function(){
+
   return( names(logging::getLogger()$level) )
-  
+
 }
