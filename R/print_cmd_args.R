@@ -26,11 +26,12 @@ print_cmd_args <- function(args){
   # remove log and help options in args list
   cmdargs <- purrr::discard(args, names(args) %in% c('log', 'help'))
 
-  # format message
-  opt <- paste(paste0(names(cmdargs), ": ", cmdargs), collapse = '\n')
-  msg <- paste0("Command line args:\n", opt, "\n\n")
+  if(length(cmdargs) > 0){
+    # format message
+    opt <- paste(paste0(names(cmdargs), ": ", cmdargs), collapse = '\n')
+    msg <- paste0("Command line args:\n", opt, "\n")
 
-  # prints out command line args
-  logging::loginfo(msg)
-
+    # prints out command line args
+    logging::loginfo(msg)
+  }
 }
