@@ -8,5 +8,5 @@ Description: Series of functions for scripting in R
 LazyData: true
 Imports:
 	logging,
-	optparse
+	argparse
 RoxygenNote: 6.0.1
