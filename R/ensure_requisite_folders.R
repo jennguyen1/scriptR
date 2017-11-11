@@ -1,4 +1,4 @@
-#' Prints Command Line Args
+#' Creates Folder if it Doesn't Exist
 #'
 #' @param dir filepath to required folder
 #'

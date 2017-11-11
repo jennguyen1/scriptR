@@ -35,7 +35,6 @@ import_lib <- function(lib_opts){
     library(tidyverse)
     library(purrrlyr)
     library(data.table)
-    library(dtplyr)
   }
 
   if(lib_opts$viz){
