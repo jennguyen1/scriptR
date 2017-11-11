@@ -14,27 +14,21 @@
 
 logmisc <- function(x, log_level = 'INFO'){
 
-  # restrict logging to INFO level
-  current_level <- logging::getLogger()$level
-  logmisc_level <- logging::loglevels[log_level]
-
-  if(current_level <= logmisc_level){
-
-    # print summary to console
-    print(x)
-
-    # write to logfile depending on object type
-    if( scriptR::exists_logfile() ){
-
-      logfile <- scriptR::get_logfile()
+  handlers <- logging::getLogger()$handlers
+  for(h in handlers){
+    current_level <- h$level
+    logmisc_level <- logging::loglevels[log_level]
+    if(logmisc_level < current_level) next
+    
+    if("file" %in% names(h)){
+      logfile <- h$file
       if(is.data.frame(x)){
         suppressWarnings(write.table(x, file = logfile, append = TRUE, quote = FALSE, row.names = FALSE, sep = "\t"))
       } else{
         capture.output(x, file = logfile, append = TRUE)
       }
-
+    } else{
+      print(x)
     }
-
   }
-
 }

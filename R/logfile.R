@@ -5,15 +5,21 @@
 #' @details
 #'
 #' exists_logfile() checks whether the logfile exists
-#' get_logfile() obtains the name of the logfile
+#' get_logfile() obtains the name(s) of the logfile
 #'
 #' @name logfile
 NULL
 
 #' @rdname logfile
 #' @export
-exists_logfile <- function() !is.null(logging::getLogger()$handlers$`logging::writeToFile`)
+exists_logfile <- function() {
+  handlers <- names(logging::getLogger()$handlers) 
+  any(stringr::str_detect(handlers, "file"))
+}
 
 #' @rdname logfile
 #' @export
-get_logfile <- function() logging::getLogger()$handlers$`logging::writeToFile`$file
+get_logfile <- function(){
+  handlers <- names(logging::getLogger()$handlers) 
+  stringr::str_subset(handlers, "file")
+}
