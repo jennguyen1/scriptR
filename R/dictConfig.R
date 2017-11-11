@@ -19,6 +19,7 @@ dictConfig <- function(config){
   assertthat::assert_that(exists("level", root_options), msg = "level not found in root options")
   assertthat::assert_that(exists("handlers", root_options), msg = "handlers not found in root options")
   
+  logging::setLevel(root_options$level)
   for(h in root_options$handlers){
     make_handler(handler_options = config$handlers[[h]], handler_name = h, formatters = config$formatters)
   }
