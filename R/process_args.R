@@ -19,11 +19,11 @@
 #' args <- process_options(parser = parser, description = description, log_level = "DEBUG", ...)
 #'
 
-process_args <- function(parser, description, log_level = "DEBUG", ...){
+process_args <- function(parser, description, ...){
 
   args <- parser$parse_args(...)
 
-  scriptR::start_logging(file_name = args$log, log_level = log_level)
+  scriptR::start_logging(file_name = args$log, config = args$log_config)
   logging::loginfo(description)
   scriptR::print_cmd_args(args)
 
