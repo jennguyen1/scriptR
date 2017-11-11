@@ -14,10 +14,9 @@ This package contains a variety of functions that simplify scripting in R.
 
 **Logging**
 
+* `dictConfig()` intiates a logging session based off a list with configurations
 * `start_logging()` initiates a logging session, using the logging package
-* `set_level_global()` sets the logging level for all handlers
-* `get_log_level()` gets the logging level for all handlers
-* `exists_logfile()` and `get_logfile()` obtain information regarding the logfile
+* `exists_logfile()` and `get_logfile()` obtain information regarding the logfile(s)
 * `logmisc()` extends the logging package by allowing logging of misc objects at the any specified level, such as dataframes
 * `logerr()` logs an error with logging and then stops the program
 * `print_cmd_args()` prints out command line arguments to console and logfile if it exists
