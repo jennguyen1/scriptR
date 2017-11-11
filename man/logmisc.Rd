@@ -9,7 +9,7 @@ logmisc(x, log_level = "INFO")
 \arguments{
 \item{x}{any object to be logged}
 
-\item{log_evel}{level to log the message}
+\item{log_level}{level to log the message}
 }
 \description{
 Allows for logging of data structures such as dataframes, etc.

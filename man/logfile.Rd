@@ -15,5 +15,5 @@ Obtain information regarding the logfile
 }
 \details{
 exists_logfile() checks whether the logfile exists
-get_logfile() obtains the name of the logfile
+get_logfile() obtains the name(s) of the logfile
 }

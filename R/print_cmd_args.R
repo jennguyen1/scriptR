@@ -12,7 +12,8 @@
 #' description <- "TEST"
 #' parser <- ArgumentParser(description = description)
 #' parser$add_argument("--test_opt", help = "This is a test")
-#' parser$add_argument("--log", default = NULL, help = "Prefix of the log file; call be NULL or a default name [default]")
+#' parser$add_argument("--log", default = NULL, help = "Name of logfile [$(default)]")
+#' parser$add_argument("--log_config", default = NULL, help = "Name of log config file [%(default)]")
 #' args <- parser$parse_args()
 #'
 #' print_cmd_args(args)

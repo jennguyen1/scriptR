@@ -3,7 +3,7 @@
 #' Allows for logging of data structures such as dataframes, etc.
 #'
 #' @param x any object to be logged
-#' @param log_evel level to log the message
+#' @param log_level level to log the message
 #'
 #' @export
 #'

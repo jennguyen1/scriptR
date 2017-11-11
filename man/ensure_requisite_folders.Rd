@@ -2,7 +2,7 @@
 % Please edit documentation in R/ensure_requisite_folders.R
 \name{ensure_requisite_folders}
 \alias{ensure_requisite_folders}
-\title{Prints Command Line Args}
+\title{Creates Folder if it Doesn't Exist}
 \usage{
 ensure_requisite_folders(dir)
 }
@@ -10,5 +10,5 @@ ensure_requisite_folders(dir)
 \item{dir}{filepath to required folder}
 }
 \description{
-Prints Command Line Args
+Creates Folder if it Doesn't Exist
 }

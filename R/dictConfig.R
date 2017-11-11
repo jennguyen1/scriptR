@@ -1,12 +1,13 @@
 #' Takes the logging configuration from a list
 #'
-#' R adaptation of the Python logging.config.dictConfig function. See \url{https://docs.python.org/3.6/library/logging.config.html#dictionary-schema-details} for schema details
+#' R adaptation of the Python logging.config.dictConfig function. See \url{https://docs.python.org/3.6/library/logging.config.html#dictionary-schema-details} for schema details.
 #'
 #' @param config configurations as a list
 #'
 #' @export
 #'
 #' @examples
+#' config <- rjson::fromJSON(file = "log_config.json")
 #' dictConfig(config)
 #'
 
