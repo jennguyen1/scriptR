@@ -7,7 +7,7 @@
 print_cmd_args(args)
 }
 \arguments{
-\item{args}{list of command line args, generated from argsparse::parse_args}
+\item{args}{list of command line args, generated from argparse::parse_args}
 }
 \description{
 Prints out all command line arguments

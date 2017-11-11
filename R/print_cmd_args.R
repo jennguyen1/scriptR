@@ -2,7 +2,7 @@
 #'
 #' Prints out all command line arguments
 #'
-#' @param args list of command line args, generated from argsparse::parse_args
+#' @param args list of command line args, generated from argparse::parse_args
 #'
 #' @export
 #'
