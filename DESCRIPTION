@@ -8,7 +8,11 @@ Description: Series of functions for scripting in R
 LazyData: true
 Imports:
   stringr,
+  dplyr,
+  purrr,
   rjson,
-	logging,
-	argparse
+  logging,
+  argparse, 
+  assertthat,
+  devtools
 RoxygenNote: 6.0.1
