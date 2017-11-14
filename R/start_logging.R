@@ -1,29 +1,25 @@
 #' Initiates a Logging Session
 #'
-#' Logs messages to command line, with option to create a log file or load configurations from a json file. 
+#' Logs messages to command line, load configurations from a json file. 
 #'
-#' If config file not specified, will initiate a basic session (with logfile if specified).
+#' If config file not specified, will initiate a basic session from the default config file.
 #'
-#' @param file_name name of the log file, if desired
 #' @param config name of the config file, json format
 #'
 #' @export
 #'
 #' @examples
-#' start_logging("log_test")
+#' start_logging("log_config.json")
 #'
 
-start_logging <- function(file_name = NULL, config = NULL){
+start_logging <- function(config = NULL){
   logging::logReset()
 
-  # generic result without a config file
   if( is.null(config) ){
-    logging::basicConfig(level = "NOTSET")
-    if( !is.null(file_name) ) logging::getLogger()$addHandler(logging::writeToFile, file = file_name, level = "NOTSET")
-    
-  # config file
+    d <- scriptR::log_config 
   } else{
+    assertthat::assert_that(stringr::str_detect(config, "json$"), msg = "Please use json file format for configurations")
     d <- rjson::fromJSON(file = config)
-    scriptR::dictConfig(d)
   }
+  scriptR::dictConfig(d)
 }

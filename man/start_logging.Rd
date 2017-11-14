@@ -4,20 +4,18 @@
 \alias{start_logging}
 \title{Initiates a Logging Session}
 \usage{
-start_logging(file_name = NULL, config = NULL)
+start_logging(config = NULL)
 }
 \arguments{
-\item{file_name}{name of the log file, if desired}
-
 \item{config}{name of the config file, json format}
 }
 \description{
-Logs messages to command line, with option to create a log file or load configurations from a json file.
+Logs messages to command line, load configurations from a json file.
 }
 \details{
-If config file not specified, will initiate a basic session (with logfile if specified).
+If config file not specified, will initiate a basic session from the default config file.
 }
 \examples{
-start_logging("log_test")
+start_logging("log_config.json")
 
 }

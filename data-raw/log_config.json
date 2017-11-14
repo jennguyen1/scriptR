@@ -1,0 +1,58 @@
+{
+    "version": 1,
+
+    
+    "root": {
+	"level": "NOTSET",
+	"handlers": ["console"]
+    }, 
+
+    
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+            "formatter": "brief",
+	    "stream": "ext://sys.stdout",
+	    "level": "NOTSET"
+        },
+        "log_file": {
+            "class": "logging.FileHandler",
+            "formatter": "brief",
+	    "mode": "w",
+	    "level": "INFO",
+            "filename": "~/file.log"
+        },
+        "minimal_file": {
+            "class": "logging.FileHandler",
+            "formatter": "minimal",
+	    "mode": "w",
+	    "level": "INFO",
+            "filename": "~/minimal.log"
+        },
+	"debug_file": {
+	    "class": "logging.FileHandler",
+	    "formatter": "detailed",
+	    "mode": "a",
+	    "level": "DEBUG",
+	    "filename": "~/debug_file.log"
+	}
+    },
+
+
+    "formatters": {
+	"detailed": {
+	    "format": "{asctime} {funcName} [{levelname}] {message}",
+	    "datefmt": "%Y-%m-%d %H:%M:%S",
+	    "style": "{"
+	},
+        "brief": {
+            "format": "{asctime} [{levelname}] {message}",
+            "datefmt": "%Y-%m-%d %H:%M:%S",
+	    "style": "{"
+        },
+        "minimal": {
+            "format": "{message}",
+	    "style": "{"
+        }
+    }
+}

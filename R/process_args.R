@@ -14,8 +14,7 @@
 #' description <- "TEST"
 #' parser <- ArgumentParser(description = description)
 #' parser$add_argument("--test_opt", help = "This is a test")
-#' parser$add_argument("--log", default = NULL, help = "Name of logfile [$(default)]")
-#' parser$add_argument("--log_config", default = NULL, help = "Name of log config file [%(default)]")
+#' parser$add_argument("--log", default = NULL, help = "Name of log config file [$(default)]")
 #'
 #' args <- process_options(parser = parser, description = description, ...)
 #'
@@ -24,7 +23,7 @@ process_args <- function(parser, description, ...){
 
   args <- parser$parse_args(...)
 
-  scriptR::start_logging(file_name = args$log, config = args$log_config)
+  scriptR::start_logging(config = args$log)
   logging::loginfo(description)
   scriptR::print_cmd_args(args)
 
