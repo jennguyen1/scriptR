@@ -9,6 +9,7 @@
 log_config
 }
 \description{
-This is the default list/dictionary for start_logging if a config file is not given. It should be used as a template for the json files for the logging config.
+This is the default list/dictionary for start_logging if a config file is not 
+given. It should be used as a template for the json files for the logging config.
 }
 \keyword{datasets}

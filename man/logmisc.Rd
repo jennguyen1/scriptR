@@ -12,7 +12,7 @@ logmisc(x, log_level = "INFO")
 \item{log_level}{level to log the message}
 }
 \description{
-Allows for logging of data structures such as dataframes, etc.
+Allows for logging of data structures such as data.frames, etc.
 }
 \examples{
 logmisc(iris)

@@ -4,7 +4,7 @@
 \alias{logerr}
 \title{Logs an Error and Ends Program}
 \usage{
-logerr(msg)
+logerr(msg = "")
 }
 \arguments{
 \item{msg}{error message}

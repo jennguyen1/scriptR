@@ -2,7 +2,7 @@
 % Please edit documentation in R/dictConfig.R
 \name{dictConfig}
 \alias{dictConfig}
-\title{Takes the logging configuration from a list}
+\title{Takes the Logging Configuration From a List}
 \usage{
 dictConfig(config)
 }
@@ -10,10 +10,16 @@ dictConfig(config)
 \item{config}{configurations as a list}
 }
 \description{
-R adaptation of the Python logging.config.dictConfig function. See \url{https://docs.python.org/3.6/library/logging.config.html#dictionary-schema-details} for schema details.
+R adaptation of the Python logging.config.dictConfig function. 
+See \url{https://docs.python.org/3.6/library/logging.config.html#dictionary-schema-details} 
+for schema details.
 }
 \examples{
+# from an external json file
 config <- rjson::fromJSON(file = "log_config.json")
 dictConfig(config)
+
+# use the internal log_config list 
+dictConfig(log_config)
 
 }

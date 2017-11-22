@@ -4,10 +4,10 @@
 \alias{ensure_requisite_folders}
 \title{Creates Folder if it Doesn't Exist}
 \usage{
-ensure_requisite_folders(dir)
+ensure_requisite_folders(path)
 }
 \arguments{
-\item{dir}{filepath to required folder}
+\item{path}{filepath to required folder}
 }
 \description{
 Creates Folder if it Doesn't Exist

@@ -4,7 +4,7 @@
 \alias{process_args}
 \title{Process Command Line Args and Initiate Logging}
 \usage{
-process_args(parser, description, ...)
+process_args(parser, description = "", ...)
 }
 \arguments{
 \item{parser}{an argparse object}
@@ -17,7 +17,8 @@ process_args(parser, description, ...)
 a list parsed args
 }
 \description{
-Processes command line args, logs script description & arguments passed in. Returns list of arg values.
+Processes command line args, logs script description & arguments passed in. 
+Returns list of arg values.
 }
 \examples{
 
