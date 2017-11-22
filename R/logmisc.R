@@ -1,6 +1,7 @@
+
 #' Logs Misc Data Structures
 #'
-#' Allows for logging of data structures such as dataframes, etc.
+#' Allows for logging of data structures such as data.frames, etc.
 #'
 #' @param x any object to be logged
 #' @param log_level level to log the message
@@ -18,7 +19,7 @@ logmisc <- function(x, log_level = 'INFO'){
   for(h in handlers){
     current_level <- h$level
     logmisc_level <- logging::loglevels[log_level]
-    if(logmisc_level < current_level) next
+    if(current_level < logmisc_level) next
     
     if("file" %in% names(h)){
       logfile <- h$file
