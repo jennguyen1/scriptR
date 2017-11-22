@@ -1,3 +1,4 @@
+
 #' Logfile Information
 #'
 #' Obtain information regarding the logfile
@@ -21,5 +22,6 @@ exists_logfile <- function() {
 #' @export
 get_logfile <- function(){
   handlers <- names(logging::getLogger()$handlers) 
-  stringr::str_subset(handlers, "file")
+  files <- stringr::str_subset(handlers, "file")
+  unlist(lapply(files, function(f) logging::getLogger()$handlers[[f]]$file))
 }
