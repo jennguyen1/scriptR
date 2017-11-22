@@ -1,3 +1,4 @@
+
 #' Logs an Error and Ends Program
 #'
 #' Extension of logging::logerror to end the program
@@ -7,7 +8,7 @@
 #' @export
 #'
 
-logerr <- function(msg){
+logerr <- function(msg = ""){
   logging::logerror(msg)
   stop(msg)
 }

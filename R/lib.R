@@ -1,3 +1,4 @@
+
 #' Load Library Functions
 #'
 #' Functions to load libraries
@@ -19,15 +20,12 @@ install_scriptR <- function() devtools::install_github("jennguyen1/scriptR")
 #' @rdname lib
 #' @export
 lib <- function(...){
-
   args <- as.character(substitute(list(...))[-1])
   lib_opts <- dplyr::mutate_at(data.frame(data = TRUE, develop = TRUE, viz = FALSE), dplyr::vars(dplyr::one_of(args)), function(x) TRUE)
   suppressWarnings( suppressPackageStartupMessages( import_lib(lib_opts) ) )
-
 }
 
 import_lib <- function(lib_opts){
-
   if(lib_opts$data){
     # data wrangling
     library(magrittr)
@@ -57,5 +55,4 @@ import_lib <- function(lib_opts){
     library(logging)
     library(parallel)
   }
-
 }
