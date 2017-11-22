@@ -1,8 +1,10 @@
+
 #' Initiates a Logging Session
 #'
 #' Logs messages to command line, load configurations from a json file. 
 #'
-#' If config file not specified, will initiate a basic session from the default config file.
+#' If config file not specified, will initiate a basic session from the default 
+#' config file (saved to the list log_config).
 #'
 #' @param config name of the config file, json format
 #'
@@ -16,10 +18,15 @@ start_logging <- function(config = NULL){
   logging::logReset()
 
   if( is.null(config) ){
-    d <- scriptR::log_config 
+    d <- log_config 
   } else{
     assertthat::assert_that(stringr::str_detect(config, "json$"), msg = "Please use json file format for configurations")
-    d <- rjson::fromJSON(file = config)
+    d <- tryCatch({
+      rjson::fromJSON(file = config)
+    }, error = function(err){
+      message(err)
+      stop(stringr::str_interp("${config} could not be loaded, please use json file format for configurations"))
+    })
   }
-  scriptR::dictConfig(d)
+  dictConfig(d)
 }
