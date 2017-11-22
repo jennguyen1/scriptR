@@ -1,6 +1,8 @@
+
 #' Process Command Line Args and Initiate Logging
 #'
-#' Processes command line args, logs script description & arguments passed in. Returns list of arg values.
+#' Processes command line args, logs script description & arguments passed in. 
+#' Returns list of arg values.
 #'
 #' @param parser an argparse object
 #' @param description description of script
@@ -19,13 +21,21 @@
 #' args <- process_options(parser = parser, description = description, ...)
 #'
 
-process_args <- function(parser, description, ...){
-
+process_args <- function(parser, description = "", ...){
+  assertthat::assert_that(
+    !missing(parser),
+    msg = "Input parser is missing"
+  )
+  assertthat::assert_that(
+    all.equal(class(parser), c("proto", "environment")), 
+    msg = "Input parser must be an ArgumentParser object"
+  )
+  
   args <- parser$parse_args(...)
 
-  scriptR::start_logging(config = args$log)
+  start_logging(config = args$log)
   logging::loginfo(description)
-  scriptR::print_cmd_args(args)
+  print_cmd_args(args)
 
-  return(args)
+  args
 }
