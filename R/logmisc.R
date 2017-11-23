@@ -19,17 +19,18 @@ logmisc <- function(x, log_level = 'INFO'){
   for(h in handlers){
     current_level <- h$level
     logmisc_level <- logging::loglevels[log_level]
-    if(current_level < logmisc_level) next
-    
-    if("file" %in% names(h)){
-      logfile <- h$file
-      if(is.data.frame(x)){
-        suppressWarnings(write.table(x, file = logfile, append = TRUE, quote = FALSE, row.names = FALSE, sep = "\t"))
+
+    if(logmisc_level >= current_level){
+      if("file" %in% names(h)){
+        logfile <- h$file
+        if(is.data.frame(x)){
+          suppressWarnings(write.table(x, file = logfile, append = TRUE, quote = FALSE, row.names = FALSE, sep = "\t"))
+        } else{
+          capture.output(x, file = logfile, append = TRUE)
+        }
       } else{
-        capture.output(x, file = logfile, append = TRUE)
+        print(x)
       }
-    } else{
-      print(x)
     }
   }
 }

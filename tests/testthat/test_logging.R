@@ -72,15 +72,15 @@ test_that("log_misc logs objects", {
   
   detect123 <- function(x) any(str_detect(x, "1\\s+2\\s+3"))
   expect_true(detect123(f1))
-  expect_false(detect123(f2))
+  expect_true(detect123(f2))
   
   detect10s <- function(x) any(str_detect(x, "14\\s+15\\s+16"))
-  expect_true(detect10s(f1))
+  expect_false(detect10s(f1))
   expect_true(detect10s(f2))
   
   detectdf <- function(x) any(str_detect(x, "Species"))
   expect_true(detectdf(f1))
-  expect_false(detectdf(f2))
+  expect_true(detectdf(f2))
 })
 
 shutdown()
