@@ -23,7 +23,7 @@ logmisc <- function(x, log_level = 'INFO'){
     if(logmisc_level >= current_level){
       to_file <- "file" %in% names(h)
       logfile <- if(to_file) h$file else ""
-      if(is.vector(x)){
+      if(is.vector(x) & !is.list(x)){
         if(!to_file) cat(x, "\n") else cat(x, "\n", file = logfile, append = TRUE)
       } else if(is.data.frame(x)){
         if(!to_file) print(x) else suppressWarnings(write.table(x, file = logfile, append = TRUE, quote = FALSE, row.names = FALSE, sep = "\t"))
