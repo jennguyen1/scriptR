@@ -21,15 +21,14 @@ logmisc <- function(x, log_level = 'INFO'){
     logmisc_level <- logging::loglevels[log_level]
 
     if(logmisc_level >= current_level){
-      if("file" %in% names(h)){
-        logfile <- h$file
-        if(is.data.frame(x)){
-          suppressWarnings(write.table(x, file = logfile, append = TRUE, quote = FALSE, row.names = FALSE, sep = "\t"))
-        } else{
-          capture.output(x, file = logfile, append = TRUE)
-        }
+      to_file <- "file" %in% names(h)
+      logfile <- if(to_file) h$file else ""
+      if(is.vector(x)){
+        if(!to_file) cat(x, "\n") else cat(x, "\n", file = logfile, append = TRUE)
+      } else if(is.data.frame(x)){
+        if(!to_file) print(x) else suppressWarnings(write.table(x, file = logfile, append = TRUE, quote = FALSE, row.names = FALSE, sep = "\t"))
       } else{
-        print(x)
+        if(!to_file) print(x) else capture.output(x, file = logfile, append = TRUE)
       }
     }
   }
