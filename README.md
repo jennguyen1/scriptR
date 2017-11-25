@@ -9,7 +9,7 @@ This package contains a variety of functions that simplify scripting in R.
 
 **File Manipulation and Creation**
 
-* `ensure_requisite_folders(dir)` ensures that a file path is available, otherwise creates it
+* `ensure_requisite_folders()` ensures that a file path is available, otherwise creates it
 * `write.out()` writes out dataframes to folder, depending on file extension
 
 **Logging**
