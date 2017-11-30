@@ -1,6 +1,7 @@
 # scriptR
 
-This package contains a variety of functions that simplify scripting in R. 
+This package contains a variety of functions for reproducible research in R. Provided are a variety of functions that simplify logging, asserting, 
+scripting in R. 
 
 **Load Libraries**
 
@@ -10,7 +11,8 @@ This package contains a variety of functions that simplify scripting in R.
 **File Manipulation and Creation**
 
 * `ensure_requisite_folders()` ensures that a file path is available, otherwise creates it
-* `write.out()` writes out dataframes to folder, depending on file extension
+* `read.in()` reads in DFs with a specified function and options
+* `write.out()` writes out DFs to folder, depending on file extension
 
 **Logging**
 
@@ -21,6 +23,20 @@ This package contains a variety of functions that simplify scripting in R.
 * `logerr()` logs an error with logging and then stops the program
 * `print_cmd_args()` prints out command line arguments to console and logfile if it exists
 * `process_args()` intiates a script by (1) start log, (2) process command line args, (3) log command line args
+
+
+**Assertions**
+* `assert_cols_in()` asserts that columns are inside a DF
+* `assert_between_boundaries()` wrapper function, asserts specified columns of DF are between specified boundaries
+* `assert_between_n_std()` wrapper function, asserts specified columns of DF are between specified standard deviations from the mean
+* `assert_col_types()` wrapper function, asserts specified columns of DF are specified types
+* `assert_dim()` wrapper function, asserts resulting DF has certain dimensions
+* `assert_none_missing()` wrapper function, asserts specified columns of DF are not NA
+* `assert_rows_after()` wrapper function, asserts resulting DF rows compare to incoming DF
+* `assert_unique()` wrapper function, asserts specified columns of DF are unique
+
+**Miscellaneous**
+`is_named_list()` checks whether a list is a uniquely named list
 
 ## Installation
 `devtools::install_github("jennguyen1/scriptR")`
