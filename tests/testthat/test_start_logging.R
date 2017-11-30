@@ -75,7 +75,9 @@ test_that("dictConfig handles missing and invalid data", {
 
 test_that("start_logging correctly intiates default logging", {
   logReset()
+  expect_null(loginfo("hi"))
   start_logging()
+  expect_output(loginfo("hi"))
   log <- getLogger()
   base_handlers <- names(log$handlers)
   expect_equal(base_handlers, "console")
