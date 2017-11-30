@@ -14,8 +14,8 @@ read.in(filename, f = data.table::fread, ...)
 \item{...}{additional arguments passed to f}
 }
 \description{
-Wrapper around a read in file (like data.table::fread or read.table). Checks
-whether a file exists first and opens it with specified function
+Wrapper around a read in data frame in a file (like data.table::fread or 
+read.table). Checks whether a file exists first and opens it with specified function
 }
 \examples{
 read.in("test.csv")
