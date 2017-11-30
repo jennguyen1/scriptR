@@ -21,6 +21,7 @@ write.out <- function(dat, file, ...){
   csv <- stringr::str_detect(file, "csv$")
   tsv <- stringr::str_detect(file, "tsv$")
 
+  logging::loginfo(stringr::str_interp("Writing out ${file}"))
   if(csv){
     write.csv(dat, file, row.names = FALSE, quote = FALSE, ...)
   } else if(tsv){

@@ -4,10 +4,10 @@
 \alias{read.in}
 \title{Opens a File}
 \usage{
-read.in(filename, f = data.table::fread, ...)
+read.in(file, f = data.table::fread, ...)
 }
 \arguments{
-\item{filename}{character, file path}
+\item{file}{character, file path}
 
 \item{f}{function, reads in the file, defaults to data.table::fread}
 
