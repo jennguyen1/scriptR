@@ -14,5 +14,6 @@ write.out(dat, file, ...)
 \item{...}{other parameters to pass to writing functions}
 }
 \description{
-Wrapper around write.table and write.csv depending on file extension
+Wrapper around write.table and write.csv depending on file extension.
+Logs action at the INFO level.
 }

@@ -1,7 +1,8 @@
 
 #' Writes Out Data Frames
 #'
-#' Wrapper around write.table and write.csv depending on file extension
+#' Wrapper around write.table and write.csv depending on file extension.
+#' Logs action at the INFO level.
 #'
 #' @param dat data.frame
 #' @param file name of file; if file extension is csv or tsv saves file as such

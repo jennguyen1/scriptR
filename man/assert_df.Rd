@@ -41,11 +41,11 @@ data.frame
 }
 \description{
 Wrappers to check that the data frame a function returns satisfies current conditions \cr
-* `assert_between_boundaries()` columns are between certain boundaries \cr
-* `assert_between_n_std()` columns are between n standard deviations \cr
-* `assert_col_types()` columns are of specified types \cr
-* `assert_none_missing()` columns are not NA \cr
-* `assert_unique()` columns are unique \cr
-* `assert_dim()` df has dimensions, can leave \cr
-* `assert_rows_after()` df rows satisfies certain conditions over original
+assert_between_boundaries() columns are between certain boundaries \cr
+assert_between_n_std() columns are between n standard deviations \cr
+assert_col_types() columns are of specified types \cr
+assert_none_missing() columns are not NA \cr
+assert_unique() columns are unique \cr
+assert_dim() df has dimensions, can leave \cr
+assert_rows_after() df rows satisfies certain conditions over original
 }
