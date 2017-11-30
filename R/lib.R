@@ -12,6 +12,7 @@
 #'  viz: (data visualization) ggplot2 and extensions \cr
 #'
 #' @name lib
+NULL
 
 #' @rdname lib
 #' @export
@@ -53,6 +54,7 @@ import_lib <- function(lib_opts){
     library(argparse)
     library(optparse)
     library(logging)
+    library(assertthat)
     library(parallel)
   }
 }
