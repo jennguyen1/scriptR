@@ -9,12 +9,13 @@ read.in(filename, f = data.table::fread, ...)
 \arguments{
 \item{filename}{character, file path}
 
-\item{f}{function, reads in the file}
+\item{f}{function, reads in the file, defaults to data.table::fread}
 
 \item{...}{additional arguments passed to f}
 }
 \description{
-Checks whether a file exists and opens it using the function you request
+Wrapper around a read in file (like data.table::fread or read.table). Checks
+whether a file exists first and opens it with specified function
 }
 \examples{
 read.in("test.csv")

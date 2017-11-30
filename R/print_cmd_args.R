@@ -21,6 +21,7 @@
 
 print_cmd_args <- function(args){
   assertthat::assert_that(!missing(args), msg = "Input args is missing")
+  assertthat::assert_that(is.list(args) & !is.data.frame(args), "Input args should be a list (not a data.frame)")
   
   cmdargs <- purrr::discard(args, names(args) %in% c('log', 'help'))
   if(length(cmdargs) > 0){
