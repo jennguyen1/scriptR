@@ -2,7 +2,8 @@
 #' Opens a File
 #' 
 #' Wrapper around a read in data frame in a file (like data.table::fread or 
-#' read.table). Checks whether a file exists first and opens it with specified function
+#' read.table). Checks whether a file exists first and opens it with specified 
+#' function. Logs action at the INFO level.
 #'
 #' @param file character, file path
 #' @param f function, reads in the file, defaults to data.table::fread
@@ -18,7 +19,7 @@
 read.in <- function(file, f = data.table::fread, ...){
   assertthat::assert_that(!missing(file), msg = "Input file is missing")
   assertthat::assert_that(is.character(file), is.function(f))
-  assert_file_exists(file)
+  assertthat::is.readable(file)
   
   logging::loginfo(stringr::str_interp("Reading in ${file}"))
   raw <- tryCatch(

@@ -16,16 +16,6 @@ test_that("assert_cols_in handles invalid types", {
   expect_error(assert_cols_in(iris, 1:10))
 })
 
-test_that("assert_file_exists returns correct values", {
-  expect_null(assert_file_exists("test_assert_functions.R"))
-  expect_error(assert_file_exists("not_a_thing.txt"))
-})
-
-test_that("assert_file_exists handles invalid types", {
-  expect_error(assert_file_exists())
-  expect_error(assert_file_exists(1))
-})
-
 # assert internal functions
 test_that("internal_wrappers handles invalid data types", {
   f <- function(x) head(iris)
