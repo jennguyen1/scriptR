@@ -24,6 +24,10 @@ scripting in R.
 * `print_cmd_args()` prints out command line arguments to console and logfile if it exists
 * `process_args()` intiates a script by (1) start log, (2) process command line args, (3) log command line args
 
+**Reporters**
+* `report_function_name()` wrapper function, logs the function's name
+* `report_args()` wrapper function, logs arguments passed to function
+* `report_rows()` wrapper function, logs the rows before and after
 
 **Assertions**
 * `assert_cols_in()` asserts that columns are inside a DF
