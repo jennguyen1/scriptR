@@ -4,14 +4,14 @@
 \alias{report}
 \alias{report_function_name}
 \alias{report_args}
-\alias{report_rows}
+\alias{report_dim}
 \title{Reporter Functions}
 \usage{
 report_function_name(func)
 
 report_args(func)
 
-report_rows(func)
+report_dim(func)
 }
 \arguments{
 \item{func}{function}
@@ -23,10 +23,10 @@ function
 Wrappers to log various things\cr
 * report_function_name() logs function name at the INFO level\cr
 * report_args() logs function arguments at the DEBUG level\cr
-* report_rows() logs data frame rows before and after function at the INFO level
+* report_dim() logs data frame dimensions before and after function at the INFO level
 }
 \details{
-report_rows()'s function must take a data.frame as the first argument and return a data.frame
+report_dim()'s function must take a data.frame as the first argument and return a data.frame
 }
 \examples{
 start_logging()
@@ -37,7 +37,7 @@ this_is_a_function()
 my_function <- report_args(function(x, y, z) "Hi, I'm a function")
 my_function(x = 1:5, y = list(a = letters[1:3], b = 'b'), z = head(iris))
 
-head2 <- report_rows(head)
+head2 <- report_dim(head)
 head2(mtcars)
 
 }
