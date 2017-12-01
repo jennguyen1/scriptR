@@ -4,10 +4,10 @@
 #' Wrappers to log various things\cr
 #' * report_function_name() logs function name at the INFO level\cr
 #' * report_args() logs function arguments at the DEBUG level\cr
-#' * report_rows() logs data frame rows before and after function at the INFO level
+#' * report_dim() logs data frame dimensions before and after function at the INFO level
 #'
 #' @details 
-#' report_rows()'s function must take a data.frame as the first argument and return a data.frame
+#' report_dim()'s function must take a data.frame as the first argument and return a data.frame
 #'
 #' @param func function
 #' 
@@ -22,7 +22,7 @@
 #' my_function <- report_args(function(x, y, z) "Hi, I'm a function")
 #' my_function(x = 1:5, y = list(a = letters[1:3], b = 'b'), z = head(iris))
 #' 
-#' head2 <- report_rows(head)
+#' head2 <- report_dim(head)
 #' head2(mtcars)
 #'
 #' @name report
@@ -75,8 +75,8 @@ report_args <- function(func){
 
 #' @rdname report
 #' @export
-report_rows <- function(func){
-  "Wrapper function, logs rows before/after"
+report_dim <- function(func){
+  "Wrapper function, logs dimensions before/after"
   
   assertthat::assert_that(!missing(func), msg = "Input func is missing")
   assertthat::assert_that(is.function(func))
@@ -87,8 +87,14 @@ report_rows <- function(func){
     
     assertthat::assert_that(is.data.frame(data))
     assertthat::assert_that(is.data.frame(result))
+    cols_before <- ncol(data)
+    cols_after <- ncol(result)
     rows_before <- nrow(data)
     rows_after <- nrow(result)
+    
+    logging::loginfo(stringr::str_interp("Incoming dat cols: ${cols_before}"))
+    logging::loginfo(stringr::str_interp("Outgoing dat cols: ${cols_after}"))
+    logging::loginfo(stringr::str_interp("Change in cols: ${{cols_after - cols_before}}"))
     
     logging::loginfo(stringr::str_interp("Incoming dat rows: ${rows_before}"))
     logging::loginfo(stringr::str_interp("Outgoing dat rows: ${rows_after}"))

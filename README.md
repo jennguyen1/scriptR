@@ -27,7 +27,7 @@ scripting in R.
 **Reporters**
 * `report_function_name()` wrapper function, logs the function's name
 * `report_args()` wrapper function, logs arguments passed to function
-* `report_rows()` wrapper function, logs the rows before and after
+* `report_dim()` wrapper function, logs the dimensions before and after
 
 **Assertions**
 * `assert_cols_in()` asserts that columns are inside a DF
