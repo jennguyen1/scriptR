@@ -64,9 +64,9 @@ check_dimensions <- function(d, dim){
   assertthat::assert_that(is.numeric(dim)) # checks for numeric type and both are not NA
   if(all(!is.na(dim))){
     assertthat::assert_that(all(dim(d) == dim), msg = "Dimensions do not match expected")  
-  } else if(is.na(dim[1])){
-    assertthat::assert_that(dim(d)[2] == dim[2], msg = "Number of columns do not match expected")
-  } else{
+  } else if( !is.na(dim[1]) ){
     assertthat::assert_that(dim(d)[1] == dim[1], msg = "Number of rows do not match expected")
+  } else{
+    assertthat::assert_that(dim(d)[2] == dim[2], msg = "Number of columns do not match expected")
   }
 }
