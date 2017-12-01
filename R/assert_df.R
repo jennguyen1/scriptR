@@ -8,13 +8,14 @@
 #' * assert_none_missing() columns are not NA\cr
 #' * assert_unique() columns are unique\cr
 #' * assert_dim() df has dimensions, can leave\cr
-#' * assert_rows_after() df rows satisfies certain conditions over original
+#' * assert_margins_after() df margins satisfies certain conditions over original
 #'
 #' @param func function that returns a data.frame
 #' @param cols character vector of columns to check for
 #' @param dict list where the names are columns of output, values are arguments for function
 #' @param dim numeric vector, index 1 for rows, index 2 for columns, leave NA if don't care about a dimension
-#' @param condition character, options c('e', 'g', 'ge', 'l', 'le')
+#' @param margin character, margin to query, options c('r', 'c')
+#' @param condition character, how result DF compares to beginning Df, options c('e', 'g', 'ge', 'l', 'le')
 #' 
 #' @return function
 #'
@@ -23,22 +24,22 @@
 #' 
 #' x <- data.frame(a = runif(3), b = 1:3)
 #' dict <- list(a = 0:1, b = 0:1) 
-#' a_bound <- assert_between_boundaries(f, dict)
+#' a_bound <- assert_between_boundaries(f, dict = dict)
 #' a_bound(x) # bounds on b are incorrect; will assert error
 #' 
 #' x <- data.frame(x = 1:26, y = letters, z = c(TRUE, FALSE), stringsAsFactors = FALSE)
 #' dict <- list(x = "integer", y = "logical") 
-#' a_col <- assert_col_types(f, dict)
+#' a_col <- assert_col_types(f, dict = dict)
 #' a_col(x) # type of y incorrect; will assert error
 #' 
 #' x <- data.frame(x = 1:10, y = 1:2, z = 101:110)
-#' a_unique <- assert_unique(f, c("x", "y")) 
+#' a_unique <- assert_unique(f, cols = c("x", "y")) 
 #' a_unique(x) # y is not unique; will assert error
 #' 
-#' a_dim <- assert_dim(f, c(NA, 4)) 
+#' a_dim <- assert_dim(f, dim = c(NA, 4)) 
 #' a_dim(iris) # ncol = 5 not 4, will assert error
 #' 
-#' a_rows <- assert_rows_after(f, 'l')
+#' a_rows <- assert_margins_after(f, margin = 'r', condition = 'l')
 #' a_rows(iris) # rows equal not less than, will assert error
 #' 
 #' @name assert_df
@@ -85,12 +86,14 @@ assert_dim <- function(func, dim){
 
 #' @rdname assert_df
 #' @export
-assert_rows_after <- function(func, condition = 'e'){
-  "Wrapper function, asserts resulting DF rows compare to incoming DF"
+assert_margins_after <- function(func, margin = 'r', condition = 'e'){
+  "Wrapper function, asserts resulting DF margins compare to incoming DF"
   
   assertthat::assert_that(!missing(func), msg = "Input func is missing")
   assertthat::assert_that(is.function(func))
+  assertthat::assert_that(margin %in% c('r', 'c'), msg = "Invalid margin type")
   assertthat::assert_that(condition %in% c('e', 'g', 'ge', 'l', 'le'), msg = "Invalid condition type")
+  n_margin <- if(margin == 'r') nrow else ncol
   
   wrapper <- function(...){
     data <- list(...)[[1]]
@@ -98,8 +101,8 @@ assert_rows_after <- function(func, condition = 'e'){
     
     assertthat::assert_that(is.data.frame(data))
     assertthat::assert_that(is.data.frame(result))
-    rows_before <- nrow(data)
-    rows_after <- nrow(result)
+    rows_before <- n_margin(data)
+    rows_after <- n_margin(result)
     
     switch(
       condition,

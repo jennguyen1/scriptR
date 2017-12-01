@@ -185,7 +185,7 @@ test_that("assert_dimensions returns the correct values", {
   expect_error(f_wrong(x))
 })
 
-test_that("assert_dimensions handles invalid types", {
+test_that("assert_dim handles invalid types", {
   x <- data.frame(x = 1:10, y = sample(0:1, 10, replace = TRUE))
   f <- function(x) x
   
@@ -205,31 +205,32 @@ test_that("assert_dimensions handles invalid types", {
   expect_error(f_err())
 })
 
-test_that("assert_rows_after returns the correct values", {
+test_that("assert_margins_after returns the correct values", {
   x <- data.frame(x = 1:10, y = sample(0:1, 10, replace = TRUE))
 
-  f_right <- assert_rows_after(head, 'l')
+  f_right <- assert_margins_after(head, margin = 'r', condition = 'l')
   expect_equal(f_right(x), head(x))
-  f_right <- assert_rows_after(head, 'le')
+  f_right <- assert_margins_after(head, margin = 'r', condition = 'le')
   expect_equal(f_right(x), head(x))
   
-  f_wrong <- assert_rows_after(head, 'e')
+  f_wrong <- assert_margins_after(head, margin = 'r', condition = 'e')
   expect_error(f_wrong(x))
-  f_wrong <- assert_rows_after(head, 'g')
+  f_wrong <- assert_margins_after(head, margin = 'r', condition = 'g')
   expect_error(f_wrong(x))
-  f_wrong <- assert_rows_after(head, 'ge')
+  f_wrong <- assert_margins_after(head, margin = 'r', condition = 'ge')
   expect_error(f_wrong(x))
 })
 
 test_that("assert_rows_after handles invalid data types", {
-  expect_error(assert_rows_after())
-  expect_error(assert_rows_after(1))
-  expect_error(assert_rows_after(head, 'x'))
+  expect_error(assert_margins_after())
+  expect_error(assert_margins_after(1))
+  expect_error(assert_margins_after(head, margin = 'x', condition = 'e'))
+  expect_error(assert_margins_after(head, margin = 'r', condition = 'x'))
 
   f <- function(x) head(mtcars)
-  f_err <- assert_rows_after(f, 'e')
+  f_err <- assert_margins_after(f, margin = 'r', condition = 'e')
   expect_error(f_err(1))
   f <- function(x) 1
-  f_err <- assert_rows_after(f, 'e')
+  f_err <- assert_margins_after(f, margin = 'r', condition = 'e')
   expect_error(f_err(iris))
 })
