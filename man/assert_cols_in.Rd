@@ -15,6 +15,7 @@ assert_cols_in(d, cols)
 Asserts That Columns are in Data Frame
 }
 \examples{
-assert_cols_in(iris, c("Petal.Width", "Petal.Length"))
+assert_cols_in(iris, c("Petal.Width", "Petal.Length")) # cols in, will do nothing
+assert_cols_in(iris, c("x", "y")) # cols not in, will assert error
 
 }
