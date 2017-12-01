@@ -14,6 +14,7 @@
 #'
 
 logmisc <- function(x, log_level = 'INFO'){
+  "Logs data structions such as data.frames, etc"
 
   handlers <- logging::getLogger()$handlers
   for(h in handlers){

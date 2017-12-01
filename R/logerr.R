@@ -9,6 +9,8 @@
 #'
 
 logerr <- function(msg = ""){
+  "Logs an error and raises and error"
+  
   logging::logerror(msg)
   stop(msg)
 }

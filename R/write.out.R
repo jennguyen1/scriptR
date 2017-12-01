@@ -12,6 +12,8 @@
 #'
 
 write.out <- function(dat, file, ...){
+  "Writes out data.frames to a file"
+  
   assertthat::assert_that(!missing(dat), msg = "Input dat is missing")
   assertthat::assert_that(!missing(file), msg = "Input file is missing")
   assertthat::assert_that(

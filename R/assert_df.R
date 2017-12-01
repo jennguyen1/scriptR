@@ -44,6 +44,8 @@ assert_unique <- assert_generic_cols(check_unique)
 #' @rdname assert_df
 #' @export
 assert_dim <- function(func, dim){
+  "Wrapper function, asserts resulting DF has certain dimensions"
+  
   assertthat::assert_that(!missing(func), msg = "Input func is missing")
   assertthat::assert_that(is.function(func))
   assertthat::assert_that(!missing(dim), msg = "Input dim is missing")
@@ -61,6 +63,8 @@ assert_dim <- function(func, dim){
 #' @rdname assert_df
 #' @export
 assert_rows_after <- function(func, condition = 'e'){
+  "Wrapper function, asserts resulting DF rows compare to incoming DF"
+  
   assertthat::assert_that(!missing(func), msg = "Input func is missing")
   assertthat::assert_that(is.function(func))
   assertthat::assert_that(condition %in% c('e', 'g', 'ge', 'l', 'le'), msg = "Invalid condition type")

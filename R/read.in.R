@@ -17,6 +17,8 @@
 #' 
 
 read.in <- function(file, f = data.table::fread, ...){
+  "Reads in a data.frame from a file"
+  
   assertthat::assert_that(!missing(file), msg = "Input file is missing")
   assertthat::assert_that(is.character(file), is.function(f))
   assertthat::is.readable(file)

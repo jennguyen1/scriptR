@@ -8,6 +8,8 @@
 #' 
 
 is_named_list <- function(l){
+  "Checks whether a list is a uniquely named list"
+  
   assertthat::assert_that(is.list(l))
   names <- names(l)
   length(unique(names)) == length(l)

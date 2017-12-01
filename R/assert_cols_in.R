@@ -11,6 +11,8 @@
 #' 
 
 assert_cols_in <- function(d, cols){
+  "Asserts that columns are in a data frame"
+  
   assertthat::assert_that(!missing(d), msg = "Input d is missing")
   assertthat::assert_that(!missing(cols), msg = "Input cols is missing")
   assertthat::assert_that(is.data.frame(d), is.character(cols))

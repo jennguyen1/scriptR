@@ -36,7 +36,7 @@ scripting in R.
 * `assert_unique()` wrapper function, asserts specified columns of DF are unique
 
 **Miscellaneous**
-`is_named_list()` checks whether a list is a uniquely named list
+* `is_named_list()` checks whether a list is a uniquely named list
 
 ## Installation
 `devtools::install_github("jennguyen1/scriptR")`

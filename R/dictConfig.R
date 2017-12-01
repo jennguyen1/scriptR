@@ -19,6 +19,8 @@
 #'
 
 dictConfig <- function(config){
+  "Initiates logging from a config dictionary/list"
+  
   assertthat::assert_that(
     !missing(config), 
     msg = "Input config is missing"

@@ -22,6 +22,8 @@
 #'
 
 process_args <- function(parser, description = "", ...){
+  "Processes command line args, logs script description and arguments"
+  
   assertthat::assert_that(
     !missing(parser),
     msg = "Input parser is missing"

@@ -15,10 +15,12 @@
 #'
 
 start_logging <- function(config = NULL){
+  "Initiates a logging session"
+  
   logging::logReset()
 
   if( is.null(config) ){
-    d <- log_config 
+    d <- scriptR::log_config 
   } else{
     assertthat::assert_that(stringr::str_detect(config, "json$"), msg = "Please use json file format for configurations")
     d <- tryCatch({

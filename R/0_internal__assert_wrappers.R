@@ -18,6 +18,8 @@ throw_assert <- function(x, msg_suffix){
 
 # generic assert wrapper function when given a vector of columns
 assert_generic_cols <- function(assert_func){
+  "Wrapper function, asserts specified columns of DF satisfy certain conditions"
+  
   assertthat::assert_that(!missing(assert_func), msg = "Input assert_func is missing")
   assertthat::assert_that(is.function(assert_func))
   
@@ -41,9 +43,10 @@ assert_generic_cols <- function(assert_func){
 
 # generic assert wrapper function when given a list (dictionary)
 assert_generic_dict <- function(assert_func){
+  "Wrapper function, asserts specified columns of DF satisfy certain conditions"
+  
   assertthat::assert_that(!missing(assert_func), msg = "Input assert_func is missing")
   assertthat::assert_that(is.function(assert_func))
-  
   
   assert <- function(func, dict){
     assertthat::assert_that(!missing(func), msg = "Input func is missing")
