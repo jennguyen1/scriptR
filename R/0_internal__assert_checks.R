@@ -62,11 +62,14 @@ check_unique <- function(d, cols){
 check_dimensions <- function(d, dim){
   assertthat::assert_that(length(dim) == 2)
   assertthat::assert_that(is.numeric(dim)) # checks for numeric type and both are not NA
+  
+  expect_rows <- dim[1]
+  expect_cols <- dim[2]
   if(all(!is.na(dim))){
-    assertthat::assert_that(all(dim(d) == dim), msg = "Dimensions do not match expected")  
+    assertthat::assert_that(all(dim(d) == dim), msg = stringr::str_interp("Dimensions do not match expected (${expect_rows}, ${expect_cols})"))
   } else if( !is.na(dim[1]) ){
-    assertthat::assert_that(dim(d)[1] == dim[1], msg = "Number of rows do not match expected")
+    assertthat::assert_that(dim(d)[1] == expect_rows, msg = stringr::str_interp("Number of rows do not match expected (${expect_rows})"))
   } else{
-    assertthat::assert_that(dim(d)[2] == dim[2], msg = "Number of columns do not match expected")
+    assertthat::assert_that(dim(d)[2] == expect_cols, msg = stringr::str_interp("Number of columns do not match expected (${expect_cols})"))
   }
 }
