@@ -36,7 +36,7 @@ scripting in R.
 * `assert_col_types()` wrapper function, asserts specified columns of DF are specified types
 * `assert_dim()` wrapper function, asserts resulting DF has certain dimensions
 * `assert_none_missing()` wrapper function, asserts specified columns of DF are not NA
-* `assert_margins_after()` wrapper function, asserts resulting DF rows compare to incoming DF
+* `assert_margins_after()` wrapper function, asserts resulting DF margins compare to incoming DF
 * `assert_unique()` wrapper function, asserts specified columns of DF are unique
 
 **Miscellaneous**
