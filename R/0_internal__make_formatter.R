@@ -41,6 +41,7 @@ make_formatter <- function(format_options){
     thread <- ""
     threadName <- ""
     process <- ""
+    funcName <- ""
     
     # formats available in R logging package
     name <- record$logger  
