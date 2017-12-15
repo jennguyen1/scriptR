@@ -35,8 +35,8 @@ scripting in R.
 * `assert_between_n_std()` wrapper function, asserts specified columns of DF are between specified standard deviations from the mean
 * `assert_col_types()` wrapper function, asserts specified columns of DF are specified types
 * `assert_dim()` wrapper function, asserts resulting DF has certain dimensions
-* `assert_none_missing()` wrapper function, asserts specified columns of DF are not NA
 * `assert_margins_after()` wrapper function, asserts resulting DF margins compare to incoming DF
+* `assert_none_missing()` wrapper function, asserts specified columns of DF are not NA
 * `assert_unique()` wrapper function, asserts specified columns of DF are unique
 
 **Miscellaneous**
