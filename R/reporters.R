@@ -40,6 +40,7 @@ report_function_name <- function(func){
     args <- as.list(match.call())
     func_name <- as.character(args[[1]])
     func_msg <- stringr::str_to_title(stringr::str_replace_all(func_name, "_", " "))
+    func_msg <- stringr::str_interp("### ${func_msg} ###")
     logging::loginfo(func_msg)
     return( func(...) )
   }
@@ -92,13 +93,14 @@ report_dim <- function(func){
     rows_before <- nrow(data)
     rows_after <- nrow(result)
     
+    logging::loginfo(stringr::str_interp("Incoming dat rows: ${rows_before}"))
+    logging::loginfo(stringr::str_interp("Outgoing dat rows: ${rows_after}"))
+    logging::loginfo(stringr::str_interp("Change in rows: ${{rows_after - rows_before}}"))
+    
     logging::loginfo(stringr::str_interp("Incoming dat cols: ${cols_before}"))
     logging::loginfo(stringr::str_interp("Outgoing dat cols: ${cols_after}"))
     logging::loginfo(stringr::str_interp("Change in cols: ${{cols_after - cols_before}}"))
     
-    logging::loginfo(stringr::str_interp("Incoming dat rows: ${rows_before}"))
-    logging::loginfo(stringr::str_interp("Outgoing dat rows: ${rows_after}"))
-    logging::loginfo(stringr::str_interp("Change in rows: ${{rows_after - rows_before}}"))
     return(result)
   }
   return(wrapper)
