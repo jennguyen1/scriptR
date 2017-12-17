@@ -4,7 +4,8 @@
 #' Wrappers to log various things\cr
 #' * report_function_name() logs function name at the INFO level\cr
 #' * report_args() logs function arguments at the DEBUG level\cr
-#' * report_dim() logs data frame dimensions before and after function at the INFO level
+#' * report_dim() logs data frame dimensions before and after function at the INFO level \cr
+#' * report_na() logs number of na per column of the data frame at the DEBUG level
 #'
 #' @details 
 #' report_dim()'s function must take a data.frame as the first argument and return a data.frame
@@ -101,6 +102,27 @@ report_dim <- function(func){
     logging::loginfo(stringr::str_interp("Outgoing dat cols: ${cols_after}"))
     logging::loginfo(stringr::str_interp("Change in cols: ${{cols_after - cols_before}}"))
     
+    return(result)
+  }
+  return(wrapper)
+}
+
+#' @rdname report
+#' @export
+report_na <- function(func){
+  "Wrapper function, logs number of NA per column"
+  
+  assertthat::assert_that(!missing(func), msg = "Input func is missing")
+  assertthat::assert_that(is.function(func))
+  
+  wrapper <- function(...){
+    result <- func(...)
+    
+    assertthat::assert_that(is.data.frame(result))
+    report_na <- tidyr::gather(dplyr::summarise_all(result, ~ sum(is.na(.x))), key = "variable", value = "n_NA")
+    logging::logdebug("Counting NAs by column")
+    logmisc(report_na, "DEBUG")
+
     return(result)
   }
   return(wrapper)

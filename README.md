@@ -28,6 +28,7 @@ scripting in R.
 * `report_function_name()` wrapper function, logs the function's name
 * `report_args()` wrapper function, logs arguments passed to function
 * `report_dim()` wrapper function, logs the dimensions before and after
+* `report_na()` wrapper function, logs number of NA per column of the data frame
 
 **Assertions**
 * `assert_cols_in()` asserts that columns are inside a DF
