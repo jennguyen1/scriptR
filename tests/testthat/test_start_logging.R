@@ -1,7 +1,9 @@
 context("Configure Logging")
 
-library(logging)
+library(futile.logger)
 library(readr)
+
+reset_log <- function() logging.loggers <- NULL
 
 test_that("make_formatter handles missing and invalid data", {
   expect_error(make_formatter())
@@ -49,18 +51,18 @@ test_that("make_handler handles missing and invalid data", {
 })
 
 test_that("dictConfig handles missing and invalid data", {
-  logReset()
+  reset_log()
   expect_error(dictConfig())
   expect_error(dictConfig(list(r = "", h = "", f = "")))
   expect_error(dictConfig(list(root = "", h = "", f = "")))
   expect_error(dictConfig(list(root = "", handlers = "", f = "")))
   
-  logReset()
+  reset_log()
   expect_error(dictConfig(list(root = "", handlers = "", formatters = "")))
   expect_error(dictConfig(list(root = "", handlers = list(a = 1), formatters = "")))
   expect_error(dictConfig(list(root = "", handlers = list(a = 1), formatters = list(a = 1))))
   
-  logReset()
+  reset_log()
   check_error <- function(...){
     blank <- log_config
     blank$root <- list(...)
@@ -70,20 +72,18 @@ test_that("dictConfig handles missing and invalid data", {
   check_error(level = "", h = "")
   check_error(level = "not a thing", handlers = "")
   check_error(level = "NOTSET", handlers = c("console", "not a thing"))
-  logReset()
+  reset_log()
 })
 
 test_that("start_logging correctly intiates default logging", {
-  logReset()
-  expect_null(loginfo("hi"))
+  reset_log()
+  expect_null(logging.info("hi"))
   start_logging()
-  expect_output(loginfo("hi"))
-  log <- getLogger()
-  base_handlers <- names(log$handlers)
+  expect_output(logging.info("hi"))
+  base_handlers <- logging.loggers
   expect_equal(base_handlers, "console")
-  expect_equal(log$level, loglevels[1])
-  expect_equal(log$handlers$console$level, loglevels[1])
-  logReset()
+  expect_equal(names(flog.logger("console")$threshold), "TRACE")
+  reset_log()
 })
 
 test_that("start_logging correctly intiates customized logging", {
@@ -100,26 +100,24 @@ test_that("start_logging correctly intiates customized logging", {
   write("hello world", file = "test.json")
 
   # logging file specs
-  logReset()
+  reset_log()
   expect_error(start_logging("not a thing"))
-  logReset()
+  reset_log()
   expect_error(start_logging("test.json"))
   
   # logging init
-  logReset()
+  reset_log()
   start_logging("file.json")
-  log <- getLogger()
-  base_handlers <- names(log$handlers)
+  base_handlers <- logging.loggers
   expect_equal(base_handlers, c("console", "file1", "file2"))
-  expect_equal(log$level, loglevels["NOTSET"])
-  expect_equal(log$handlers$console$level, loglevels["NOTSET"])
-  expect_equal(log$handlers$file1$level, loglevels["INFO"])
-  expect_equal(log$handlers$file2$level, loglevels["DEBUG"])
-  expect_equal(log$handlers$file1$file, "file1.log")
-  expect_equal(log$handlers$file2$file, "file2.log")
+  expect_equal(names(flog.logger("console")$threshold), "TRACE")
+  expect_equal(names(flog.logger("file1")$threshold), "INFO")
+  expect_equal(names(flog.logger("file2")$threshold), "DEBUG")
+  expect_equal(get("file", envir = environment(flog.logger("file1")$appender)), "file1.log")
+  expect_equal(get("file", envir = environment(flog.logger("file2")$appender)), "file2.log")
   
   # check file existence
-  logwarn("hi")
+  logging.warning("hi")
   expect_true(file.exists("file1.log"))
   expect_true(file.exists("file2.log"))
   

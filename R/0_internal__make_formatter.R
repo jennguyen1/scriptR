@@ -26,31 +26,26 @@ make_formatter <- function(format_options){
     format_options$style == "{", 
     msg = "The only supported formatter style is {"
   )
-  time_format <- ifelse(!is.null(format_options$datefmt), format_options$datefmt, "")
+  time_format <- ifelse(!is.null(format_options$datefmt), format_options$datefmt, "%Y-%m-%d %H:%M:%S")
   use_string <- stringr::str_replace_all(format_options$format, "[{]", "${")
   
-  use_formatter <- function(record){
-    
-    # formats of Python logging not available
-    pathname <- ""
-    filename <- ""
-    module <- ""
-    lineno <- ""
-    created <- ""
-    msecs <- ""
-    thread <- ""
-    threadName <- ""
-    process <- ""
-    funcName <- ""
-    
-    # formats available in R logging package
-    name <- record$logger  
-    asctime <- format(as.POSIXct(record$timestamp), time_format)
-    message <- record$msg
-    levelname <- record$levelname
-    levelno <- record$level
-    
-    stringr::str_interp(use_string)
-  }
-  use_formatter
+  # formats of Python logging not available
+  pathname <- ""
+  filename <- ""
+  lineno <- ""
+  created <- ""
+  msecs <- ""
+  thread <- ""
+  threadName <- ""
+  process <- ""
+
+  # formats available in R logging package
+  module <- "~n"
+  funcName <- "~f"
+  levelname <- "~l"
+  asctime <- "~t"
+  message <- "~m"
+
+  format <- stringr::str_interp(use_string)
+  futile.logger::layout.format(format, time_format)
 }

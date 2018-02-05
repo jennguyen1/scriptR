@@ -69,11 +69,12 @@ dictConfig <- function(config){
   )
   
   assertthat::assert_that(
-    root_options$level %in% names(logging::loglevels), 
-    msg = stringr::str_interp("Specified root level ${{root_options$level}} not available in logging::loglevels")
+    root_options$level %in% c("NOTSET", "DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"), 
+    msg = stringr::str_interp("Specified root level ${{root_options$level}} not available")
   )
-  logging::setLevel(root_options$level)
+  futile.logger::flog.threshold(futile.logger::FATAL)
   
+  logging.loggers <<- root_options$handlers
   for(h in root_options$handlers){
     assertthat::assert_that(
       exists(h, where = config$handlers), 

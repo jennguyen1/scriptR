@@ -12,7 +12,7 @@ throw_assert <- function(x, msg_suffix){
   check_cols_fail <- names(purrr::discard(unlist(x), ~ .x))
   if(length(check_cols_fail) > 0){
     msg = stringr::str_interp("Column(s) ${{paste(check_cols_fail, collapse = ', ')}} ${msg_suffix}")
-    logging::logerror(msg)
+    logging.error(msg)
     stop(msg)
   }
 }

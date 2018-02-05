@@ -17,7 +17,7 @@
 start_logging <- function(config = NULL){
   "Initiates a logging session"
   
-  logging::logReset()
+  reset_log()
 
   if( is.null(config) ){
     d <- scriptR::log_config 
@@ -26,7 +26,7 @@ start_logging <- function(config = NULL){
     d <- tryCatch({
       rjson::fromJSON(file = config)
     }, error = function(err){
-      message(err)
+      message('hi')
       stop(stringr::str_interp("${config} could not be loaded, please use json file format for configurations"))
     })
   }

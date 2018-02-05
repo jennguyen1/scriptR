@@ -48,16 +48,22 @@ make_handler <- function(handler_options, handler_name, formatters){
   formatter <- make_formatter(formatters[[handler_options$formatter]])
   
   assertthat::assert_that(
-    handler_options$level %in% names(logging::loglevels), 
-    msg = stringr::str_interp("Specified handler level ${{handler_options$level}} not available in logging::loglevels")
+    handler_options$level %in% c("NOTSET", "DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"), 
+    msg = stringr::str_interp("Specified handler level ${{handler_options$level}} not available")
   )
-  levelname <- handler_options$level
+  levelname <- switch(
+    handler_options$level,
+    "NOTSET" = futile.logger::TRACE,
+    "DEBUG" = futile.logger::DEBUG,
+    "INFO" = futile.logger::INFO,
+    "WARNING" = futile.logger::WARN,
+    "ERROR" = futile.logger::ERROR, 
+    "CRITICAL" = futile.logger::FATAL
+  )
   
   if(handler_options$class == "logging.StreamHandler"){
-    action <- logging::writeToConsole
-    
-    logging::getLogger()$addHandler(handler_name, action = action, formatter = formatter, level = levelname)
-    
+    futile.logger::flog.logger(handler_name, threshold = levelname, appender = futile.logger::appender.console(), layout = formatter)
+
   } else if (handler_options$class == "logging.FileHandler"){
     assertthat::assert_that(
       exists("filename", where = handler_options), 
@@ -79,7 +85,6 @@ make_handler <- function(handler_options, handler_name, formatters){
       msg = "mode should be either 'w' or 'a'"
     )
     
-    action <- logging::writeToFile
     filename <- handler_options$filename
     
     # remove old file if mode is write (not append)
@@ -87,7 +92,7 @@ make_handler <- function(handler_options, handler_name, formatters){
       file.remove(filename)
     }
     
-    logging::getLogger()$addHandler(handler_name, action = action, file = filename, formatter = formatter, level = levelname)
+    futile.logger::flog.logger(handler_name, threshold = levelname, appender = futile.logger::appender.file(filename), layout = formatter)
     
   } else{
     stop("The only supported handler classes are logging.StreamHandler and logging.FileHandler")

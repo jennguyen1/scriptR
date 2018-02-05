@@ -5,6 +5,7 @@
 \alias{report_function_name}
 \alias{report_args}
 \alias{report_dim}
+\alias{report_na}
 \title{Reporter Functions}
 \usage{
 report_function_name(func)
@@ -12,6 +13,8 @@ report_function_name(func)
 report_args(func)
 
 report_dim(func)
+
+report_na(func)
 }
 \arguments{
 \item{func}{function}
@@ -23,7 +26,8 @@ function
 Wrappers to log various things\cr
 * report_function_name() logs function name at the INFO level\cr
 * report_args() logs function arguments at the DEBUG level\cr
-* report_dim() logs data frame dimensions before and after function at the INFO level
+* report_dim() logs data frame dimensions before and after function at the INFO level \cr
+* report_na() logs number of na per column of the data frame at the DEBUG level
 }
 \details{
 report_dim()'s function must take a data.frame as the first argument and return a data.frame

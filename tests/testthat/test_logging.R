@@ -1,9 +1,10 @@
 context("Logging")
 
-library(logging)
+library(futile.logger)
 library(readr)
 library(stringr)
 
+reset_log <- function() logging.loggers <- NULL
 setup <- function(){
   blank <- log_config
   names(blank$handlers) <- c("console", "file1", "file2", "file3")
@@ -19,7 +20,7 @@ setup <- function(){
   if(file.exists("file2.log")) file.remove("file2.log")
 }
 shutdown <- function(){
-  logReset()
+  reset_log()
   file.remove("file.json")
   file.remove("file1.log")
   file.remove("file2.log")
@@ -28,10 +29,10 @@ shutdown <- function(){
 setup()
 
 test_that("logging accurately logs levels", {
-  logReset()
+  reset_log()
   start_logging("file.json")
-  loginfo("hi")
-  logdebug("hi")
+  logging.info("hi from info")
+  logging.debug("hi from debug")
   f1 <- read_lines("file1.log")
   f2 <- read_lines("file2.log")
   expect_equal(length(f1), 1)
@@ -39,34 +40,25 @@ test_that("logging accurately logs levels", {
 })
 
 test_that("logging accurately resets log files", {
-  logReset()
+  reset_log()
   start_logging("file.json")
-  logwarn("hi")
+  logging.warning("hi")
   f1 <- read_lines("file1.log")
   f2 <- read_lines("file2.log")
   expect_equal(length(f1), 1)
   expect_equal(length(f2), 3)
 })
 
-test_that("exists_logfile and get_logfile returns corrrect values", {
-  expect_true(exists_logfile())
-  expect_equal(get_logfile(), c("file1.log", "file2.log"))
-})
-
-test_that("logerr throws an error", {
-  expect_error(expect_output(logerr("hello world")))
-})
-
 shutdown()
 
 setup()
 
-test_that("log_misc logs objects", {
-  logReset()
+test_that("logging objects", {
+  reset_log()
   start_logging("file.json")
-  logmisc(1:10)
-  logmisc(11:20, "DEBUG")
-  logmisc(head(iris))
+  logging.info(1:10)
+  logging.debug(11:20)
+  logging.info(head(iris))
   f1 <- read_lines("file1.log")
   f2 <- read_lines("file2.log")
   
