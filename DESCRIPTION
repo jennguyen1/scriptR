@@ -11,7 +11,7 @@ Imports:
   dplyr,
   purrr,
   rjson,
-  logging,
+  futile.logger,
   argparse, 
   assertthat,
   devtools
