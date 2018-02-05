@@ -23,7 +23,7 @@ read.in <- function(file, f = data.table::fread, ...){
   assertthat::assert_that(is.character(file), is.function(f))
   assertthat::is.readable(file)
   
-  logging::loginfo(stringr::str_interp("Reading in ${file}"))
+  logging.info(stringr::str_interp("Reading in ${file}"))
   raw <- tryCatch(
     as.data.frame(f(file, ...)), 
     error = function(e){

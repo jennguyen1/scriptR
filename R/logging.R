@@ -1,6 +1,15 @@
 
 #' Python Style Logging Functions
 #'
+#' * logging.log() \cr
+#' * logging.debug() \cr
+#' * logging.info() \cr
+#' * logging.warning() \cr
+#' * logging.error() \cr
+#' * logging.critical() \cr
+#' * logging.exception()
+#'
+#'
 #' @name logging
 NULL
 

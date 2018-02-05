@@ -29,6 +29,6 @@ print_cmd_args <- function(args){
   if(length(cmdargs) > 0){
     opt <- paste(paste0(names(cmdargs), ": ", cmdargs), collapse = '\n')
     msg <- paste0("Command line args:\n", opt, "\n")
-    logging::loginfo(msg)
+    logging.info(msg)
   }
 }

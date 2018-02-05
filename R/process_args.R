@@ -36,7 +36,7 @@ process_args <- function(parser, description = "", ...){
   args <- parser$parse_args(...)
 
   start_logging(config = args$log)
-  logging::loginfo(description)
+  logging.info(description)
   print_cmd_args(args)
 
   args
