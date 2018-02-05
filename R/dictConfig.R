@@ -72,16 +72,7 @@ dictConfig <- function(config){
     root_options$level %in% c("NOTSET", "DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"), 
     msg = stringr::str_interp("Specified root level ${{root_options$level}} not available")
   )
-  levelname <- switch(
-    root_options$level,
-    "NOTSET" = "TRACE",
-    "DEBUG" = "DEBUG",
-    "INFO" = "INFO",
-    "WARNING" = "WARN",
-    "ERROR" = "ERROR", 
-    "CRITICAL" = "FATAL"
-  )
-  futile.logger::flog.threshold(levelname)
+  futile.logger::flog.threshold(futile.logger::FATAL)
   
   logging.loggers <<- root_options$handlers
   for(h in root_options$handlers){

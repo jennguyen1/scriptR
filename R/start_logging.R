@@ -17,7 +17,7 @@
 start_logging <- function(config = NULL){
   "Initiates a logging session"
   
-  logging.loggers <- NULL
+  reset_log()
 
   if( is.null(config) ){
     d <- scriptR::log_config 

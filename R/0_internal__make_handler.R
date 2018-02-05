@@ -53,12 +53,12 @@ make_handler <- function(handler_options, handler_name, formatters){
   )
   levelname <- switch(
     handler_options$level,
-    "NOTSET" = "TRACE",
-    "DEBUG" = "DEBUG",
-    "INFO" = "INFO",
-    "WARNING" = "WARN",
-    "ERROR" = "ERROR", 
-    "CRITICAL" = "FATAL"
+    "NOTSET" = futile.logger::TRACE,
+    "DEBUG" = futile.logger::DEBUG,
+    "INFO" = futile.logger::INFO,
+    "WARNING" = futile.logger::WARN,
+    "ERROR" = futile.logger::ERROR, 
+    "CRITICAL" = futile.logger::FATAL
   )
   
   if(handler_options$class == "logging.StreamHandler"){
