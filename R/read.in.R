@@ -31,5 +31,6 @@ read.in <- function(file, f = data.table::fread, ...){
       stop("File could not be opened and converted to a data.frame")
     }
   )
+  logging.info(stringr::str_interp("Dimensions: (${{nrow(raw)}}, ${{ncol(raw)}})"))
   raw
 }
