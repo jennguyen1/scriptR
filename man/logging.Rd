@@ -32,5 +32,5 @@ logging.exception(msg)
 * logging.warning() \cr
 * logging.error() \cr
 * logging.critical() \cr
-* logging.exception()
+* logging.exception() - use with withCallingHandlers()
 }

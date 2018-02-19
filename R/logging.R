@@ -7,7 +7,7 @@
 #' * logging.warning() \cr
 #' * logging.error() \cr
 #' * logging.critical() \cr
-#' * logging.exception()
+#' * logging.exception() - use with withCallingHandlers()
 #'
 #'
 #' @name logging
@@ -61,5 +61,6 @@ logging.critical <- function(x) logging.log(x, level = "CRITICAL")
 #' @export
 logging.exception <- function(msg){
   logging.error(msg)
-  traceback()
+  stack <- sys.calls()
+  logging.error(limitedLabels(stack))
 }
