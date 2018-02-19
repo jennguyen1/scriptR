@@ -23,7 +23,7 @@ logging.error(x)
 
 logging.critical(x)
 
-logging.exception(msg)
+logging.exception(msg, e)
 }
 \description{
 * logging.log() \cr
@@ -32,5 +32,5 @@ logging.exception(msg)
 * logging.warning() \cr
 * logging.error() \cr
 * logging.critical() \cr
-* logging.exception() - use with withCallingHandlers()
+* logging.exception()
 }
