@@ -32,6 +32,7 @@ scripting in R.
 * `assert_cols_in()` asserts that columns are inside a DF
 * `assert_between_boundaries()` wrapper function, asserts specified columns of DF are between specified boundaries
 * `assert_between_n_std()` wrapper function, asserts specified columns of DF are between specified standard deviations from the mean
+* `assert_in()` wrapper function, asserts specified columns of DF have values that are in specified lists
 * `assert_col_types()` wrapper function, asserts specified columns of DF are specified types
 * `assert_dim()` wrapper function, asserts resulting DF has certain dimensions
 * `assert_margins_after()` wrapper function, asserts resulting DF margins compare to incoming DF

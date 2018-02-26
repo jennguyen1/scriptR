@@ -85,7 +85,20 @@ test_that("assert_between_n_std returns the correct values", {
   expect_error(f_wrong(x))
 })
 
-test_that("assert_between_boundaries and assert_between_n_std handles invalid types", {
+test_that("assert_in returns the correct values", {
+  set.seed(1)
+  x <- data.frame(x = sample(letters, 100, replace = TRUE), y = sample(LETTERS, 100, replace = TRUE), z = sample(1:10, 100, replace = TRUE))
+  check_right <- list(x = letters, y = LETTERS, z = 1:10)
+  check_wrong <- list(x = LETTERS, y = LETTERS, z = LETTERS)
+  f <- function(x) x
+  
+  f_right <- assert_in(f, check_right)
+  f_wrong <- assert_in(f, check_wrong)
+  expect_equal(f_right(x), x)
+  expect_error(f_wrong(x))
+})
+
+test_that("assert_between_boundaries, assert_between_n_std, and assert_in handles invalid types", {
   set.seed(1)
   x <- data.frame(x = runif(100), y = runif(100), z = runif(100), a = letters[1:25])
   f <- function(x) x
@@ -104,6 +117,12 @@ test_that("assert_between_boundaries and assert_between_n_std handles invalid ty
   f_err <- assert_between_boundaries(f, check_err)
   expect_error(f_err(x))
   f_err <- assert_between_n_std(f, check_err)
+  expect_error(f_err(x))
+  
+  x <- data.frame(x = sample(letters, 100, replace = TRUE), y = sample(LETTERS, 100, replace = TRUE), z = sample(1:10, 100, replace = TRUE))
+  check_err <- list(x = x, y = LETTERS, z = 1:10)
+  
+  f_err <- assert_in(f, check_err)
   expect_error(f_err(x))
 })
 

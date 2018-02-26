@@ -4,6 +4,7 @@
 \alias{assert_df}
 \alias{assert_between_boundaries}
 \alias{assert_between_n_std}
+\alias{assert_in}
 \alias{assert_col_types}
 \alias{assert_none_missing}
 \alias{assert_unique}
@@ -14,6 +15,8 @@
 assert_between_boundaries(func, dict)
 
 assert_between_n_std(func, dict)
+
+assert_in(func, dict)
 
 assert_col_types(func, dict)
 
@@ -45,6 +48,7 @@ function
 Wrappers to check that the data frame a function returns satisfies current conditions\cr
 * assert_between_boundaries() columns are between certain boundaries\cr
 * assert_between_n_std() columns are between n standard deviations\cr
+* assert_in() columns have values that are in specified lists\cr
 * assert_col_types() columns are of specified types\cr
 * assert_none_missing() columns are not NA\cr
 * assert_unique() columns are unique\cr
@@ -58,6 +62,10 @@ x <- data.frame(a = runif(3), b = 1:3)
 dict <- list(a = 0:1, b = 0:1) 
 a_bound <- assert_between_boundaries(f, dict = dict)
 a_bound(x) # bounds on b are incorrect; will assert error
+
+dict <- list(Species = c("versicolor", "virginica"))
+a_in <- assert_in(f, dict = dict)
+a_in(iris)
 
 x <- data.frame(x = 1:26, y = letters, z = c(TRUE, FALSE), stringsAsFactors = FALSE)
 dict <- list(x = "integer", y = "logical") 

@@ -25,6 +25,15 @@ check_between_n_std <- function(d, dict){
   check_between_boundaries(d, dict_boundaries)  
 }
 
+check_in <- function(d, dict){
+  checks <- purrr::map2(names(dict), dict, function(c, boundaries){
+    check_col <- purrr::discard(dplyr::pull(d, c), ~ is.na(.x))
+    assertthat::assert_that(is.vector(boundaries), msg = stringr::str_interp("${c} is not an atomic vector without attributes"))
+    all(check_col %in% boundaries)
+  })
+  names(checks) <- names(dict)
+  throw_assert(checks, "have values that are not in specified lists")
+}
 
 # check column types
 check_col_types <- function(d, dict){
