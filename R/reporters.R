@@ -66,9 +66,9 @@ report_args <- function(func){
     for(i in 2:length(args)){
       arg_name <- ifelse(no_names, "", names(args)[i])
       i_arg <- eval(args[[i]])
-      if(nchar(arg_name) > 0) logmisc(stringr::str_interp("${arg_name}:"), "DEBUG")
-      logmisc(i_arg, "DEBUG")
-      logmisc("", "DEBUG")
+      if(nchar(arg_name) > 0) logging.info(stringr::str_interp("${arg_name}:"))
+      logging.info(i_arg)
+      logging.info("")
     }
     return( func(...) )
   }
@@ -121,7 +121,7 @@ report_na <- function(func){
     assertthat::assert_that(is.data.frame(result))
     report_na <- tidyr::gather(dplyr::summarise_all(result, ~ sum(is.na(.x))), key = "variable", value = "n_NA")
     logging.debug("Counting NAs by column")
-    logmisc(report_na, "DEBUG")
+    logging.info(report_na)
 
     return(result)
   }
