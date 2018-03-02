@@ -1,7 +1,7 @@
 
 #' Prints Command Line Args
 #'
-#' Logs out all command line arguments
+#' Logs out all command line arguments at the INFO level.
 #'
 #' @param args list of command line args, generated from argparse::parse_args
 #'

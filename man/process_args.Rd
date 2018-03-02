@@ -17,7 +17,7 @@ process_args(parser, description = "", ...)
 a list parsed args
 }
 \description{
-Processes command line args, logs script description & arguments passed in. 
+Processes command line args, logs script description & arguments passed in at the INFO level. 
 Returns list of arg values.
 }
 \examples{

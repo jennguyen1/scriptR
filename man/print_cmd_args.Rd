@@ -10,7 +10,7 @@ print_cmd_args(args)
 \item{args}{list of command line args, generated from argparse::parse_args}
 }
 \description{
-Logs out all command line arguments
+Logs out all command line arguments at the INFO level.
 }
 \examples{
 start_logging()

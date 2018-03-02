@@ -1,7 +1,7 @@
 
 #' Process Command Line Args and Initiate Logging
 #'
-#' Processes command line args, logs script description & arguments passed in. 
+#' Processes command line args, logs script description & arguments passed in at the INFO level. 
 #' Returns list of arg values.
 #'
 #' @param parser an argparse object
