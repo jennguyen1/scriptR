@@ -32,6 +32,7 @@ import_lib <- function(lib_opts){
   if(lib_opts$data){
     # data wrangling
     library(magrittr)
+    library(glue)
     library(stringr)
     library(tidyverse)
     library(purrrlyr)
