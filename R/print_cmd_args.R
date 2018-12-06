@@ -8,6 +8,8 @@
 #' @export
 #'
 #' @examples
+#' library(argparse)
+#'
 #' start_logging()
 #'
 #' description <- "TEST"
@@ -21,10 +23,10 @@
 
 print_cmd_args <- function(args){
   "Logs command line arguments"
-  
+
   assertthat::assert_that(!missing(args), msg = "Input args is missing")
   assertthat::assert_that(is.list(args), !is.data.frame(args), msg = "Input args should be a list (not a data.frame)")
-  
+
   cmdargs <- purrr::discard(args, names(args) %in% c('log', 'help'))
   if(length(cmdargs) > 0){
     opt <- paste(paste0(names(cmdargs), ": ", cmdargs), collapse = '\n')

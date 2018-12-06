@@ -10,16 +10,18 @@ dictConfig(config)
 \item{config}{configurations as a list}
 }
 \description{
-R adaptation of the Python logging.config.dictConfig function. 
-See \url{https://docs.python.org/3.6/library/logging.config.html#dictionary-schema-details} 
+R adaptation of the Python logging.config.dictConfig function.
+See \url{https://docs.python.org/3.6/library/logging.config.html#dictionary-schema-details}
 for schema details.
 }
 \examples{
+\dontrun{
 # from an external json file
 config <- rjson::fromJSON(file = "log_config.json")
 dictConfig(config)
 
-# use the internal log_config list 
+# use the internal log_config list
 dictConfig(log_config)
+}
 
 }

@@ -3,12 +3,14 @@
 \name{lib}
 \alias{lib}
 \alias{install_scriptR}
-\alias{lib}
 \title{Load Library Functions}
 \usage{
 install_scriptR()
 
 lib(...)
+}
+\arguments{
+\item{...}{category of libraries to load c(data, develop, viz)}
 }
 \description{
 Functions to load libraries

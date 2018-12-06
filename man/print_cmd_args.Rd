@@ -13,6 +13,8 @@ print_cmd_args(args)
 Logs out all command line arguments at the INFO level.
 }
 \examples{
+library(argparse)
+
 start_logging()
 
 description <- "TEST"

@@ -56,10 +56,11 @@ Wrappers to check that the data frame a function returns satisfies current condi
 * assert_margins_after() df margins satisfies certain conditions over original
 }
 \examples{
+\dontrun{
 f <- function(x) x
 
 x <- data.frame(a = runif(3), b = 1:3)
-dict <- list(a = 0:1, b = 0:1) 
+dict <- list(a = 0:1, b = 0:1)
 a_bound <- assert_between_boundaries(f, dict = dict)
 a_bound(x) # bounds on b are incorrect; will assert error
 
@@ -68,18 +69,19 @@ a_in <- assert_in(f, dict = dict)
 a_in(iris)
 
 x <- data.frame(x = 1:26, y = letters, z = c(TRUE, FALSE), stringsAsFactors = FALSE)
-dict <- list(x = "integer", y = "logical") 
+dict <- list(x = "integer", y = "logical")
 a_col <- assert_col_types(f, dict = dict)
 a_col(x) # type of y incorrect; will assert error
 
 x <- data.frame(x = 1:10, y = 1:2, z = 101:110)
-a_unique <- assert_unique(f, cols = c("x", "y")) 
+a_unique <- assert_unique(f, cols = c("x", "y"))
 a_unique(x) # y is not unique; will assert error
 
-a_dim <- assert_dim(f, dim = c(NA, 4)) 
+a_dim <- assert_dim(f, dim = c(NA, 4))
 a_dim(iris) # ncol = 5 not 4, will assert error
 
 a_rows <- assert_margins_after(f, margin = 'r', condition = 'l')
 a_rows(iris) # rows equal not less than, will assert error
+}
 
 }

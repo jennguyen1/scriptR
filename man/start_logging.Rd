@@ -13,10 +13,12 @@ start_logging(config = NULL)
 Logs messages to command line, load configurations from a json file.
 }
 \details{
-If config file not specified, will initiate a basic session from the default 
+If config file not specified, will initiate a basic session from the default
 config file (saved to the list log_config).
 }
 \examples{
+\dontrun{
 start_logging("log_config.json")
+}
 
 }

@@ -17,16 +17,18 @@ process_args(parser, description = "", ...)
 a list parsed args
 }
 \description{
-Processes command line args, logs script description & arguments passed in at the INFO level. 
+Processes command line args, logs script description & arguments passed in at the INFO level.
 Returns list of arg values.
 }
 \examples{
-
+\dontrun{
+library(argparse)
 description <- "TEST"
 parser <- ArgumentParser(description = description)
 parser$add_argument("--test_opt", help = "This is a test")
 parser$add_argument("--log", default = NULL, help = "Name of log config file [$(default)]")
 
 args <- process_args(parser = parser, description = description, ...)
+}
 
 }

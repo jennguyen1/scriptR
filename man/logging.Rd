@@ -13,17 +13,24 @@
 \usage{
 logging.log(msg, level = "INFO")
 
-logging.debug(x)
+logging.debug(msg)
 
-logging.info(x)
+logging.info(msg)
 
-logging.warning(x)
+logging.warning(msg)
 
-logging.error(x)
+logging.error(msg)
 
-logging.critical(x)
+logging.critical(msg)
 
 logging.exception(msg, e)
+}
+\arguments{
+\item{msg}{object to log}
+
+\item{level}{logging level c("DEBUG", INFO", "WARNING", "ERROR", "CRITICAL")}
+
+\item{e}{exception}
 }
 \description{
 * logging.log() \cr

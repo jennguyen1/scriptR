@@ -9,6 +9,9 @@
 #' * logging.critical() \cr
 #' * logging.exception()
 #'
+#' @param msg object to log
+#' @param level logging level c("DEBUG", INFO", "WARNING", "ERROR", "CRITICAL")
+#' @param e exception
 #'
 #' @name logging
 NULL
@@ -39,23 +42,23 @@ logging.log <- function(msg, level = "INFO"){
 
 #' @rdname logging
 #' @export
-logging.debug <- function(x) logging.log(x, level = "DEBUG")
+logging.debug <- function(msg) logging.log(msg, level = "DEBUG")
 
 #' @rdname logging
 #' @export
-logging.info <- function(x) logging.log(x, level = "INFO")
+logging.info <- function(msg) logging.log(msg, level = "INFO")
 
 #' @rdname logging
 #' @export
-logging.warning <- function(x) logging.log(x, level = "WARNING")
+logging.warning <- function(msg) logging.log(msg, level = "WARNING")
 
 #' @rdname logging
 #' @export
-logging.error <- function(x) logging.log(x, level = "ERROR")
+logging.error <- function(msg) logging.log(msg, level = "ERROR")
 
 #' @rdname logging
 #' @export
-logging.critical <- function(x) logging.log(x, level = "CRITICAL")
+logging.critical <- function(msg) logging.log(msg, level = "CRITICAL")
 
 #' @rdname logging
 #' @export
