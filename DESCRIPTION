@@ -10,10 +10,13 @@ LazyData: true
 Depends: 
   R (>= 3.4.0)
 Imports:
+  tidyverse,
   stringr,
   dplyr,
   tidyr,
   purrr,
+  ggplot2, 
+  rlang, 
   rjson,
   futile.logger,
   argparse, 

@@ -4,20 +4,29 @@
 \alias{assert_cols_in}
 \title{Asserts That Columns are in Data Frame}
 \usage{
-assert_cols_in(d, cols)
+assert_cols_in(d, cols, ...)
 }
 \arguments{
 \item{d}{data.frame}
 
 \item{cols}{character vector of columns to check for}
+
+\item{...}{name of columns to check for}
 }
 \description{
 Asserts That Columns are in Data Frame
 }
+\details{
+Column names can be provided either as a character vector (in parameter cols) or
+as the names of columns to check for (without quotations). Do not mix the types.
+}
 \examples{
 assert_cols_in(iris, c("Petal.Width", "Petal.Length")) # cols in, will do nothing
+assert_cols_in(iris, Petal.Width, Petal.Length)
+
 \dontrun{
 assert_cols_in(iris, c("x", "y")) # cols not in, will assert error
+assert_cols_in(iris, x, y)
 }
 
 }

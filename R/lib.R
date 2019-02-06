@@ -33,12 +33,10 @@ lib <- function(...){
 import_lib <- function(lib_opts){
   if(lib_opts$data){
     # data wrangling
-    library(magrittr)
-    library(glue)
-    library(stringr)
     library(tidyverse)
-    library(purrrlyr)
     library(data.table)
+    library(glue)
+
   }
 
   if(lib_opts$viz){
@@ -51,7 +49,7 @@ import_lib <- function(lib_opts){
     library(gtable)
 
     # set ggplot2 theme
-    theme_set(theme_bw())
+    ggplot2::theme_set(ggplot2::theme_bw())
   }
 
   if(lib_opts$develop){
