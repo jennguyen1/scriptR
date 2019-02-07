@@ -31,9 +31,8 @@ assert_cols_in <- function(d, cols, ...){
     invisible(list(cols, ...))
 
   }, error = function(e){
-    c1 <- rlang::expr_text(rlang::enexpr(cols))
-    c2 <- as.character(rlang::enexprs(...))
-    cols <<- purrr::map_chr(c(c1, c2), stringr::str_replace, "[~]", "")
+    c <- as.character(rlang::enexprs(cols, ...))
+    cols <<- purrr::map_chr(c, stringr::str_replace, "[~]", "")
 
   }, finally = {
     assertthat::assert_that(is.data.frame(d), is.character(cols))
