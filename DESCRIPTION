@@ -1,15 +1,16 @@
 Package: scriptR
 Title: Scripting in R
-Version: 1.0
-Date: 2017-11-10
-Author: JN
-Maintainer: <jnnguyen2@wisc.edu>
 Description: Series of functions for scripting in R
+Date: 2017-11-10
+Version: 1.0
+Authors@R: person("Jennifer", "Nguyen", email = "jnnguyen2@wisc.edu", role = c("aut", "cre"))
 License: MIT + file LICENSE
 LazyData: true
 Depends: 
   R (>= 3.4.0)
 Imports:
+  utils,
+  stats,
   tidyverse,
   stringr,
   dplyr,
@@ -23,5 +24,8 @@ Imports:
   assertthat,
   devtools
 Suggests: 
-  testthat
+    testthat,
+    knitr,
+    rmarkdown
 RoxygenNote: 6.1.1
+VignetteBuilder: knitr
